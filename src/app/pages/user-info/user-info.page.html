@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Speakers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content">
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-stretch">
+        <ion-col size="12" size-md="6">
+          <ion-card class="speaker-card">
+            <ion-card-header>
+              <ion-item detail="false" lines="none" routerLink="/app/tabs/speakers/speaker-details/">
+                <ion-avatar slot="start">
+                  <img  alt="Speaker profile pic">
+                </ion-avatar>
+                speaker name
+              </ion-item>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list>
+                <ion-item  routerLink="/app/tabs/speakers/session/">
+                  <h3>session.name</h3>
+                </ion-item>
+
+                <ion-item routerLink="/app/tabs/speakers/speaker-details/">
+                  <h3>About speaker name</h3>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+
+            <ion-row class="ion-no-padding ion-justify-content-center">
+              <ion-col size="4" class="ion-text-left">
+                <ion-button fill="clear" size="small" color="primary" >
+                  <ion-icon name="logo-twitter" slot="start"></ion-icon>
+                  Tweet
+                </ion-button>
+              </ion-col>
+              <ion-col size="4" class="ion-text-center">
+                <ion-button fill="clear" size="small" color="primary" >
+                  <ion-icon name="share-alt" slot="start"></ion-icon>
+                  Share
+                </ion-button>
+              </ion-col>
+              <ion-col size="4" lass="ion-text-right">
+                <ion-button fill="clear" size="small" color="primary" >
+                  <ion-icon name="chatboxes" slot="start"></ion-icon>
+                  Contact
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>
+
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Schedule</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="contacts"></ion-icon>
+      <ion-label>Speakers</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="map">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>
