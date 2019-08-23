@@ -33,7 +33,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
     canLoad: [CheckTutorial]
   },  { path: 'user-info', loadChildren: './pages/user-info/user-info.module#UserInfoPageModule' },
-  { path: 'dropdown-input-page', loadChildren: './pages/dropdown-input-page/dropdown-input-page.module#DropdownInputPagePageModule' }
+  { path: 'dropdown-input-page', loadChildren: './pages/dropdown-input-page/dropdown-input-page.module#DropdownInputPagePageModule' },
+  { path: 'pourosova-entry-form', loadChildren: './pages/pourosova-entry-form/pourosova-entry-form.module#PourosovaEntryFormPageModule' },
+  { path: 'hat-entry-form', loadChildren: './pages/hat-entry-form/hat-entry-form.module#HatEntryFormPageModule' },
+  { path: 'licence-entry-form', loadChildren: './pages/licence-entry-form/licence-entry-form.module#LicenceEntryFormPageModule' }
 
 ];
 

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Enter Hat Name</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding speaker-detail">
+  <div class="ion-text-center">
+
+    <form novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label>Select Pourosova</ion-label>
+          <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="Hat">Hat1</ion-select-option>
+            <ion-select-option value="Hat">Hat2</ion-select-option>
+            <ion-select-option value="Hat">Hat3</ion-select-option>
+            <ion-select-option value="Hat">Hat4</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-input clearInput placeholder="Hat Name"></ion-input>
+
+
+        </ion-item>
+
+
+      </ion-list>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+
+
+  </div>
+
+
+</ion-content>
