@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Information Input Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding speaker-detail">
+  <div class="ion-text-center">
+
+    <form novalidate>
+      <ion-list>
+
+        <ion-item>
+          <ion-label>Select Licence No</ion-label>
+          <ion-select value="brown" okText="Okay" cancelText="Dismiss" required>
+            <ion-select-option value="Licence">Licence1</ion-select-option>
+            <ion-select-option value="Licence">Licence2</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">মালিকের নাম</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">ইউনিয়ন</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">মৌজা</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">করের ধরন</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">হোল্ডিং নং</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">জমির পরিমাণ</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">সর্বশেষ খাজনা পরিশোধের বছর</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">বকেয়া বছর</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">বকেয়া দাবি </ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">বকেয়া দাবির সুদ</ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">হাল দাবি </ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">মোট দাবি </ion-label>
+          <ion-input type="text" name="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">মন্তব্য </ion-label>
+          <ion-input type="text" name="title"></ion-input>
+        </ion-item>
+
+
+
+
+      </ion-list>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+
+
+  </div>
+
+
+</ion-content>

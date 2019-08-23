@@ -36,7 +36,8 @@ const routes: Routes = [
   { path: 'dropdown-input-page', loadChildren: './pages/dropdown-input-page/dropdown-input-page.module#DropdownInputPagePageModule' },
   { path: 'pourosova-entry-form', loadChildren: './pages/pourosova-entry-form/pourosova-entry-form.module#PourosovaEntryFormPageModule' },
   { path: 'hat-entry-form', loadChildren: './pages/hat-entry-form/hat-entry-form.module#HatEntryFormPageModule' },
-  { path: 'licence-entry-form', loadChildren: './pages/licence-entry-form/licence-entry-form.module#LicenceEntryFormPageModule' }
+  { path: 'licence-entry-form', loadChildren: './pages/licence-entry-form/licence-entry-form.module#LicenceEntryFormPageModule' },
+  { path: 'record-info-input-form', loadChildren: './pages/record-info-input-form/record-info-input-form.module#RecordInfoInputFormPageModule' }
 
 ];
 
