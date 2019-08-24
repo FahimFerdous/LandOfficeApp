@@ -32,12 +32,36 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
     canLoad: [CheckTutorial]
-  },  { path: 'user-info', loadChildren: './pages/user-info/user-info.module#UserInfoPageModule' },
-  { path: 'dropdown-input-page', loadChildren: './pages/dropdown-input-page/dropdown-input-page.module#DropdownInputPagePageModule' },
-  { path: 'pourosova-entry-form', loadChildren: './pages/pourosova-entry-form/pourosova-entry-form.module#PourosovaEntryFormPageModule' },
-  { path: 'hat-entry-form', loadChildren: './pages/hat-entry-form/hat-entry-form.module#HatEntryFormPageModule' },
-  { path: 'licence-entry-form', loadChildren: './pages/licence-entry-form/licence-entry-form.module#LicenceEntryFormPageModule' },
-  { path: 'record-info-input-form', loadChildren: './pages/record-info-input-form/record-info-input-form.module#RecordInfoInputFormPageModule' }
+  },
+  { 
+    path: 'user-info',
+     loadChildren:()=>import('./pages/user-info/user-info.module').then(m=>m.UserInfoPageModule) 
+  },
+  { 
+    path: 'dropdown-input-page',
+     loadChildren:()=>import('./pages/dropdown-input-page/dropdown-input-page.module')
+     .then(m=>m.DropdownInputPagePageModule) 
+  },
+  { 
+    path: 'pourosova-entry-form', 
+    loadChildren:()=>import('./pages/pourosova-entry-form/pourosova-entry-form.module')
+    .then(m=>m.PourosovaEntryFormPageModule) 
+  },
+  {
+     path: 'hat-entry-form', 
+     loadChildren:()=>import('./pages/hat-entry-form/hat-entry-form.module')
+     .then(m=>m.HatEntryFormPageModule)
+  },
+  {
+     path: 'licence-entry-form',
+     loadChildren:()=>import('./pages/licence-entry-form/licence-entry-form.module')
+     .then(m=>m.LicenceEntryFormPageModule)
+  },
+  { 
+    path: 'record-info-input-form',
+    loadChildren:()=>import('./pages/record-info-input-form/record-info-input-form.module')
+    .then(m=>m.RecordInfoInputFormPageModule)
+  }
 
 ];
 
