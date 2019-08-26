@@ -14,64 +14,85 @@
       <ion-list>
 
         <ion-item>
+          <ion-label>Select pourosova</ion-label>
+          <ion-select #pourosovaId="ngModel" [(ngModel)]="userInfo.pourosovaId" name="pourosovaId" value="brown" okText="Okay" cancelText="Dismiss" required>
+            <ion-select-option *ngFor="let c of pourosova"  [value]="c.key">
+              {{ c.pourosovaName }}
+             </ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Select Hat</ion-label>
+          <ion-select #hatId="ngModel" [(ngModel)]="userInfo.hatId" name="hatId" value="brown" okText="Okay" cancelText="Dismiss" required>
+            <ion-select-option *ngFor="let c of hats"  [value]="c.key">
+              {{ c.hatName }}
+             </ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
           <ion-label>Select Licence No</ion-label>
-          <ion-select value="brown" okText="Okay" cancelText="Dismiss" required>
-            <ion-select-option value="Licence">Licence1</ion-select-option>
-            <ion-select-option value="Licence">Licence2</ion-select-option>
+          <ion-select #licenceNo="ngModel" [(ngModel)]="userInfo.licenceNo" name="licenceNo" value="brown" okText="Okay" cancelText="Dismiss" required>
+            <ion-select-option *ngFor="let c of licences"  [value]="c.key">
+              {{ c.licenceNo }}
+             </ion-select-option>
 
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label position="floating">মালিকের নাম</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-label  position="floating">মালিকের নাম</ion-label>
+          <ion-input #malikerName="ngModel" [(ngModel)]="userInfo.malikerName" name="malikerName" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">ইউনিয়ন</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #union="ngModel" [(ngModel)]="userInfo.union" name="union" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">মৌজা</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #mouja="ngModel" [(ngModel)]="userInfo.mouja" name="mouja" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">করের ধরন</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #korerDhoron="ngModel" [(ngModel)]="userInfo.korerDhoron" name="korerDhoron" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">হোল্ডিং নং</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #holdingNo="ngModel" [(ngModel)]="userInfo.holdingNo" name="holdingNo" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">জমির পরিমাণ</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #jomirPoriman="ngModel" [(ngModel)]="userInfo.jomirPoriman" name="jomirPoriman" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">সর্বশেষ খাজনা পরিশোধের বছর</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #sorbosesKhajnaPorisodherBosor="ngModel" [(ngModel)]="userInfo.sorbosesKhajnaPorisodherBosor" name="sorbosesKhajnaPorisodherBosor" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">বকেয়া বছর</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #bokeyaBosor="ngModel" [(ngModel)]="userInfo.bokeyaBosor" name="bokeyaBosor" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">বকেয়া দাবি </ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #bokeyaDabi="ngModel" [(ngModel)]="userInfo.bokeyaDabi" name="bokeyaDabi" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">বকেয়া দাবির সুদ</ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #bokeyaDabirSud="ngModel" [(ngModel)]="userInfo.bokeyaDabirSud" name="bokeyaDabirSud" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">হাল দাবি </ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #halDabi="ngModel" [(ngModel)]="userInfo.halDabi" name="halDabi" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">মোট দাবি </ion-label>
-          <ion-input type="text" name="title" required></ion-input>
+          <ion-input #motDabi="ngModel" [(ngModel)]="userInfo.motDabi" name="motDabi" type="text" name="title" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">মন্তব্য </ion-label>
-          <ion-input type="text" name="title"></ion-input>
+          <ion-input #montobbo="ngModel" [(ngModel)]="userInfo.montobbo" name="montobbo" type="text" name="title"></ion-input>
         </ion-item>
 
 
@@ -81,7 +102,7 @@
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit" expand="block">Submit</ion-button>
+          <ion-button (click)="save(userInfo)" type="submit" expand="block">Submit</ion-button>
         </ion-col>
       </ion-row>
     </form>

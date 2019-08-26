@@ -4,15 +4,16 @@ import { AngularFireDatabase } from '@angular/fire/database';
 @Injectable({
   providedIn: 'root'
 })
-export class LicenceService {
- 
+export class UserInfosService {
+
   constructor(private db: AngularFireDatabase) { }
 
-  async save(licence) {
+ async save(userInfo) {
     
-    return await this.db.list('/licenceNo').push(licence);
+    return await this.db.list('/userInofs').push(userInfo);
   }
-  getAllLicense(){
-    return this.db.list('/licenceNo');
+  
+  getAllPourosova(){
+    return this.db.list('/userInofs');
   }
 }
