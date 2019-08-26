@@ -61,7 +61,13 @@ const routes: Routes = [
     path: 'record-info-input-form',
     loadChildren:()=>import('./pages/record-info-input-form/record-info-input-form.module')
     .then(m=>m.RecordInfoInputFormPageModule)
-  }
+  },
+  { 
+    path: 'search-licence-page',
+     loadChildren:()=>import('./pages/search-licence-page/search-licence-page.module')
+     .then(m=>m.SearchLicencePagePageModule)
+   }
+
 
 ];
 

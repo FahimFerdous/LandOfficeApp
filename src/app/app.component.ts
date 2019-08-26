@@ -38,7 +38,36 @@ export class AppComponent implements OnInit {
       title: 'About',
       url: '/app/tabs/about',
       icon: 'information-circle'
+    },
+    {
+      title: 'Create User Info',
+      url: '/record-info-input-form',
+      icon: 'information-circle'
+    },
+    {
+      title: 'Search Licence',
+      url: '/search-licence-page',
+      icon: 'information-circle'
+    },
+    {
+      title: ' pourosova entry form',
+      url: '/pourosova-entry-form',
+      icon: 'information-circle'
+    },
+    {
+      title: ' hate entry',
+      url: '/hat-entry-form',
+      icon: 'information-circle'
+    },
+    {
+      title: 'licence entry',
+      url: '/licence-entry-form',
+      icon: 'information-circle'
     }
+    
+
+   
+   
   ];
   loggedIn = false;
 
