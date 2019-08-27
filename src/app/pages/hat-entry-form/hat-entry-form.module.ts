@@ -22,5 +22,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [HatEntryFormPage]
+
 })
-export class HatEntryFormPageModule {}
+export class HatEntryFormPageModule { }

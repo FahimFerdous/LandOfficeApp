@@ -19,7 +19,7 @@ import { UserData } from './providers/user-data';
 })
 export class AppComponent implements OnInit {
   appPages = [
-    {
+    /* {
       title: 'Schedule',
       url: '/app/tabs/schedule',
       icon: 'calendar'
@@ -38,11 +38,11 @@ export class AppComponent implements OnInit {
       title: 'About',
       url: '/app/tabs/about',
       icon: 'information-circle'
-    },
+    }, */
     {
       title: 'Create User Info',
       url: '/record-info-input-form',
-      icon: 'information-circle'
+      icon: 'contacts'
     },
     {
       title: 'Search Licence',
@@ -52,17 +52,17 @@ export class AppComponent implements OnInit {
     {
       title: ' pourosova entry form',
       url: '/pourosova-entry-form',
-      icon: 'information-circle'
+      icon: 'map'
     },
     {
       title: ' hate entry',
       url: '/hat-entry-form',
-      icon: 'information-circle'
+      icon: 'calendar'
     },
     {
       title: 'licence entry',
       url: '/licence-entry-form',
-      icon: 'information-circle'
+      icon: 'calendar'
     }
     
 
