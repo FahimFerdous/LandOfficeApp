@@ -14,31 +14,26 @@
       <ion-list>
         <ion-item style="margin-top:10px">
           <ion-label>Select Pourosova</ion-label>
-          <ion-select name="pourosovaId" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="brown">Brown</ion-select-option>
-            <ion-select-option value="blonde">Blonde</ion-select-option>
-            <ion-select-option value="black">Black</ion-select-option>
-            <ion-select-option value="red">Red</ion-select-option>
+          <ion-select #pourosovaId="ngModel" [(ngModel)]="licence.pourosovaId" name="pourosovaId" (ionChange)="pourosovaDDLChange(licence.pourosovaId)"  value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let c of pourosova"  [value]="c.key">
+              {{ c.pourosovaName }}
+             </ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item style="margin-top:10px">
           <ion-label>Select HAT</ion-label>
-          <ion-select name="hatId" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="brown">Brown</ion-select-option>
-            <ion-select-option value="blonde">Blonde</ion-select-option>
-            <ion-select-option value="black">Black</ion-select-option>
-            <ion-select-option value="red">Red</ion-select-option>
-
+          <ion-select #hatId="ngModel" [(ngModel)]="licence.hatId" name="hatId" (ionChange)="hatDDLChange(licence.hatId)" value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let c of searchHats"  [value]="c.key">
+              {{ c.hatName }}
+             </ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item style="margin-top:10px">
           <ion-label>Select Licence No.</ion-label>
-          <ion-select name="hatId" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="brown">Brown</ion-select-option>
-            <ion-select-option value="blonde">Blonde</ion-select-option>
-            <ion-select-option value="black">Black</ion-select-option>
-            <ion-select-option value="red">Red</ion-select-option>
-
+          <ion-select #licenceId="ngModel" [(ngModel)]="licence.licenceId" name="licenceId"  value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let c of searchLicences"  [value]="c.key">
+              {{ c.licenceNo }}
+             </ion-select-option>
           </ion-select>
 
 
