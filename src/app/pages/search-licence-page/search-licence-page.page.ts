@@ -6,6 +6,7 @@ import { Hat } from '../../model/hat';
 import { PourosovaService } from '../../services/pourosova.service';
 import { HatService } from '../../services/hat.service';
 import { LicenceService } from '../../services/licence.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'search-licence-page',
@@ -26,7 +27,7 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
 
   constructor(private pourosovaServices:PourosovaService,
     private hatService:HatService,
-    private licenceServices:LicenceService) {
+    private licenceServices:LicenceService,private router:Router) {
      }
 
   ngOnInit() {
@@ -84,7 +85,7 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
        this.hats.filter(p => p.pourosovaId.toLowerCase()==pourosovaId.toLowerCase()):
         this.hats;      
         this.searchHats=filterHats;
-        console.log(this.searchHats);
+       
   }
 
   hatDDLChange(hatId){
@@ -92,9 +93,15 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
        this.licences.filter(p => p.hatId.toLowerCase()==hatId.toLowerCase()) :
         this.licences;      
         this.searchLicences=filterLicence;
-        console.log(this.searchLicences);
+       
   }
  
+
+  search(licence:Licence){
+     
+ // const v=   this.router.navigate(['/displaylicenceholderinfo/'], { queryParams: { pourosovaId: licence.pourosovaId } });
+  //console.log(v);
+  }
  
 
 }

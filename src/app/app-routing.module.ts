@@ -1,3 +1,4 @@
+import { DisplaylicenceholderinfoPage } from './pages/displaylicenceholderinfo/displaylicenceholderinfo.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckTutorial } from './providers/check-tutorial.service';
@@ -66,7 +67,13 @@ const routes: Routes = [
     path: 'search-licence-page',
      loadChildren:()=>import('./pages/search-licence-page/search-licence-page.module')
      .then(m=>m.SearchLicencePagePageModule)
-   },  { path: 'displaylicenceholderinfo', loadChildren: './pages/displaylicenceholderinfo/displaylicenceholderinfo.module#DisplaylicenceholderinfoPageModule' }
+   },
+
+  { 
+    path: 'displaylicenceholderinfo/:pourosovaId/:hatId/:licenceId',
+      loadChildren:()=>import('./pages/displaylicenceholderinfo/displaylicenceholderinfo.module').then(
+     m=>m.DisplaylicenceholderinfoPageModule) 
+    }
 
 
 
