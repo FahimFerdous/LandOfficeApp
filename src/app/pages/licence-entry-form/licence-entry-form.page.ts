@@ -18,6 +18,8 @@ export class LicenceEntryFormPage implements OnInit,OnDestroy {
   pourosova:Pourosova[];
   hats:Hat[];
   licence=new Licence();
+  searchHats: Hat[];
+
   constructor(private pourosovaServices:PourosovaService,
     private hatService:HatService,
     private licenceServices:LicenceService,
@@ -71,5 +73,14 @@ export class LicenceEntryFormPage implements OnInit,OnDestroy {
 
     this.licence=new Licence();
     
+  }
+
+  pourosovaDDLChange(pourosovaId){
+    this.searchHats=[];
+    let filterHats = (pourosovaId) ?
+       this.hats.filter(p => p.pourosovaId.toLowerCase().includes(pourosovaId.toLowerCase())):
+        this.hats;      
+        this.searchHats=filterHats;
+       
   }
 }

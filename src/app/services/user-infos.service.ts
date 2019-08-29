@@ -13,7 +13,7 @@ export class UserInfosService {
     return await this.db.list('/userInofs').push(userInfo);
   }
   
-  getAllPourosova(){
+  getAllUserInfos(){
     return this.db.list('/userInofs');
   }
 }

@@ -14,7 +14,7 @@
       <ion-list>
         <ion-item>
           <ion-label>Select Pourosova</ion-label>
-          <ion-select #pourosovaId="ngModel" [(ngModel)]="licence.pourosovaId" name="pourosovaId"  value="brown" okText="Okay" cancelText="Dismiss">
+          <ion-select #pourosovaId="ngModel" [(ngModel)]="licence.pourosovaId" name="pourosovaId" (ionChange)="pourosovaDDLChange(licence.pourosovaId)"  value="brown" okText="Okay" cancelText="Dismiss">
             <ion-select-option *ngFor="let c of pourosova"  [value]="c.key">
               {{ c.pourosovaName }}
              </ion-select-option>
@@ -23,7 +23,7 @@
         <ion-item>
           <ion-label>Select HAT</ion-label>
           <ion-select #hatId="ngModel" [(ngModel)]="licence.hatId" name="hatId" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let c of hats"  [value]="c.key">
+            <ion-select-option *ngFor="let c of searchHats"  [value]="c.key">
               {{ c.hatName }}
              </ion-select-option>
 

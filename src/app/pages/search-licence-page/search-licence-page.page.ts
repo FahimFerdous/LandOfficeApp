@@ -81,16 +81,19 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
   }
 
   pourosovaDDLChange(pourosovaId){
+    this.searchHats=[];
+    this.searchLicences=[];
     let filterHats = (pourosovaId) ?
-       this.hats.filter(p => p.pourosovaId.toLowerCase()==pourosovaId.toLowerCase()):
+       this.hats.filter(p => p.pourosovaId.toLowerCase().includes(pourosovaId.toLowerCase())):
         this.hats;      
         this.searchHats=filterHats;
        
   }
 
   hatDDLChange(hatId){
+    this.searchLicences=[];
     let filterLicence = (hatId) ?
-       this.licences.filter(p => p.hatId.toLowerCase()==hatId.toLowerCase()) :
+       this.licences.filter(p => p.hatId.toLowerCase().includes(hatId.toLowerCase())) :
         this.licences;      
         this.searchLicences=filterLicence;
        
