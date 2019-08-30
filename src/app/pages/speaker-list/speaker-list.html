@@ -3,26 +3,23 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Speakers</ion-title>
+    <ion-title>উপজেলা ভূমি অফিস</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="outer-content">
-  <ion-list>
+  <!-- <ion-list>
     <ion-grid fixed>
-      <ion-row class="ion-align-items-stretch">
-        <ion-col size="12" size-md="6" *ngFor="let speaker of speakers">
-          <ion-card class="speaker-card">
-            <ion-card-header>
-              <ion-item detail="false" lines="none" routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}">
-                <ion-avatar slot="start">
-                  <img [src]="speaker.profilePic" alt="Speaker profile pic">
-                </ion-avatar>
-                {{speaker.name}}
-              </ion-item>
-            </ion-card-header>
+      <ion-row class="ion-align-items-stretch item-content">
+        <ion-col size="6" size-md="3">
+          <ion-item detail="false" lines="none" routerLink="/app/tabs/speakers/speaker-details">
+            <ion-avatar slot="start">
+              <img src="assets/img/speakers/bear.jpg" alt="Speaker profile pic">
+            </ion-avatar>
+          </ion-item>
+          <h5 style="font-size: 14px">ভুমি উন্নয়ন করের তথ্য</h5>
 
-            <ion-card-content>
+          <!-- <ion-card-content>
               <ion-list>
                 <ion-item *ngFor="let session of speaker.sessions" routerLink="/app/tabs/speakers/session/{{session.id}}">
                   <h3>{{session.name}}</h3>
@@ -53,10 +50,81 @@
                   Contact
                 </ion-button>
               </ion-col>
-            </ion-row>
-          </ion-card>
+            </ion-row> -->
+
+  <!-- </ion-col>
+        <ion-col size="6" size-md="3">
+          <ion-item detail="false" lines="none" routerLink="/app/tabs/speakers/speaker-details">
+            <ion-avatar slot="start">
+              <img src="assets/img/speakers/bear.jpg" alt="Speaker profile pic">
+            </ion-avatar>
+          </ion-item>
+          <h5 style="font-size: 14px">ভুমি উন্নয়ন করের তথ্য</h5>
         </ion-col>
+
       </ion-row>
     </ion-grid>
-  </ion-list>
+  </ion-list> -->
+
+  <ion-row class="item-content">
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/ica-slidebox-img-1.png" alt="Speaker profile pic">
+        <p class="text-design">ই-পে ল্যান্ড ত্যাক্স/খাজনা</p>
+      </a>
+    </ion-col>
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/ica-slidebox-img-3.png" alt="Speaker profile pic">
+        <p class="text-design">ভুমি উন্নয়ন করের তথ্য</p>
+      </a>
+    </ion-col>
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/ica-slidebox-img-2.png" alt="Speaker profile pic">
+        <p class="text-design">সিটিজেন চার্টার </p>
+      </a>
+    </ion-col>
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/ica-slidebox-img-4.png" alt="Speaker profile pic">
+        <p class="text-design">ই-নামজারি আবেদন</p>
+      </a>
+    </ion-col>
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/appicon.png" alt="Speaker profile pic">
+        <p class="text-design">ই-নামজারি আবেদন আপডেট</p>
+      </a>
+    </ion-col>
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/ica-slidebox-img-1.png" alt="Speaker profile pic">
+        <p class="text-design">মৌজা ম্যাপ</p>
+      </a>
+    </ion-col>
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/ica-slidebox-img-3.png" alt="Speaker profile pic">
+        <p class="text-design">ভুমি অফিসের কর্মকর্তা/কর্মচারী</p>
+      </a>
+    </ion-col>
+
+    <ion-col size="6" size-md="3">
+      <a href="#" class="image-reshape">
+        <img class="img-shape" src="assets/img/ica-slidebox-img-2.png" alt="Speaker profile pic">
+        <p class="text-design">উত্তরাধিকার ক্যালকুলেটর</p>
+      </a>
+    </ion-col>
+
+  </ion-row>
+
+
 </ion-content>
