@@ -33,6 +33,7 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
   ngOnInit() {
     var allPourosova = this.pourosovaServices.getAllPourosova();
     var allHats = this.hatService.getAllHat();
+    
     var allLicence=this.licenceServices.getAllLicense();
     this.pourosova = [];
     this.hats = [];
@@ -59,7 +60,7 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
                       this.hats.push(y as Hat);
                       
                });   
-          
+           
             })
 
             this.subscription= allLicence.snapshotChanges().pipe().subscribe(item => {
@@ -84,7 +85,7 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
     this.searchHats=[];
     this.searchLicences=[];
     let filterHats = (pourosovaId) ?
-       this.hats.filter(p => p.pourosovaId.toLowerCase().includes(pourosovaId.toLowerCase())):
+       this.hats.filter(p => p.pourosovaId==pourosovaId):
         this.hats;      
         this.searchHats=filterHats;
        
@@ -93,7 +94,7 @@ export class SearchLicencePagePage implements OnInit,OnDestroy {
   hatDDLChange(hatId){
     this.searchLicences=[];
     let filterLicence = (hatId) ?
-       this.licences.filter(p => p.hatId.toLowerCase().includes(hatId.toLowerCase())) :
+       this.licences.filter(p => p.hatId==hatId) :
         this.licences;      
         this.searchLicences=filterLicence;
        

@@ -65,7 +65,7 @@
               </ion-list>
               <ion-row *ngIf="searchResultFound!=0">
                 <ion-col >
-                  <ion-button type="submit" expand="block" >Next</ion-button>
+                  <ion-button type="submit" (click)="openSpeakerShare()" expand="block" >Next</ion-button>
                 </ion-col>
               </ion-row>
             </ion-card-content>

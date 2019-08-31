@@ -50,7 +50,7 @@ export class LicenceEntryFormPage implements OnInit,OnDestroy {
                   this.hats.push(y as Hat);
                     
         });   
-      
+        console.log(this.hats);
         })
 
   }
@@ -78,7 +78,7 @@ export class LicenceEntryFormPage implements OnInit,OnDestroy {
   pourosovaDDLChange(pourosovaId){
     this.searchHats=[];
     let filterHats = (pourosovaId) ?
-       this.hats.filter(p => p.pourosovaId.toLowerCase().includes(pourosovaId.toLowerCase())):
+       this.hats.filter(p => p.pourosovaId==pourosovaId):
         this.hats;      
         this.searchHats=filterHats;
        

@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserInfos } from '../../model/user-inofo';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'displaylicenceholderinfo',
@@ -20,7 +21,9 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
   userInfos:UserInfos[];
   searchResultUserInfos:UserInfos[];
   searchResultFound:number;
-  constructor(private route:ActivatedRoute,private userInfoService:UserInfosService) {
+  constructor(private route:ActivatedRoute,
+    private userInfoService:UserInfosService,
+    public actionSheetCtrl: ActionSheetController) {
     console.log('constructorCalled',this.userInfos);
    }
 
@@ -64,6 +67,42 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  async openSpeakerShare(speaker: any) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'কিভাবে রশিদ পেতে চান ? ',
+      buttons: [
+        {
+          text: 'ইমেইল',
+          handler: () => {
+            console.log(
+              'Copy link clicked on https://twitter.com/' + speaker.twitter
+            );
+            if (
+              (window as any)['cordova'] &&
+              (window as any)['cordova'].plugins.clipboard
+            ) {
+              (window as any)['cordova'].plugins.clipboard.copy(
+                'https://twitter.com/' + speaker.twitter
+              );
+            }
+          }
+        },
+        {
+          text: 'ডাকযোগে'
+        },
+        {
+          text: 'উপজিলা বহুমি অফিস হতে'
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+
+    await actionSheet.present();
   }
 
 }
