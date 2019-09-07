@@ -1,6 +1,6 @@
 import { Pourosova } from './../../model/pourosova';
 import { HatService } from './../../services/hat.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Hat } from '../../model/hat';
 import { Subscription } from 'rxjs';
 import { PourosovaService } from '../../services/pourosova.service';
@@ -10,21 +10,28 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './hat-entry-form.page.html',
   styleUrls: ['./hat-entry-form.page.scss'],
 })
-export class HatEntryFormPage implements OnInit {
+export class HatEntryFormPage implements OnInit,OnDestroy {
 hat=new Hat();
 subscription: Subscription;
 pourosova:Pourosova[];
+
   constructor(private pourosovaServices:PourosovaService,
     private hatServices:HatService,private toastController: ToastController) { }
 
   ngOnInit() {
-    var x = this.pourosovaServices.getAllPourosova();
-    this.subscription= x.snapshotChanges().pipe().subscribe(item => {
+    var allPourosova = this.pourosovaServices.getAllPourosova();
+    
+    this.subscription= allPourosova.snapshotChanges().pipe().subscribe(item => {
+     
+      
       this.pourosova = [];
       item.forEach(element => {
+       
         var y = element.payload.toJSON();
         
-        y["key"] = element.key;                   
+        y["key"] = element.key;  
+        
+        console.log(y);
                 this.pourosova.push(y as Pourosova);
                   
       });   

@@ -11,20 +11,22 @@ import { ToastController } from '@ionic/angular';
 export class PourosovaEntryFormPage implements OnInit {
   Pourosova=new Pourosova();
   toast:any;
+  
   constructor(private pourosovaServices:PourosovaService,
-    private toastController: ToastController) { }
+    private toastController: ToastController) { 
+      
+    }
 
   ngOnInit() {
   }
 
-  async save(hat){
-    console.log(hat);
-    await this.pourosovaServices.save(hat).then(t=>{
-      const toast=  this.toastController.create({
+  async save(pourosova){
+    
+    await this.pourosovaServices.save(pourosova).then(t=>{
+      this.toast=  this.toastController.create({
         message:'Saved Succesfully',
         duration:2000
       }).then((toastData)=>{
-        console.log(toastData);
         toastData.present();
       });
     });
@@ -36,6 +38,7 @@ export class PourosovaEntryFormPage implements OnInit {
   HideToast(){
     this.toast = this.toastController.dismiss();
   }
- 
+
+  
 
 }
