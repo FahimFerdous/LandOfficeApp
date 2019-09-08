@@ -15,19 +15,19 @@
 
         <ion-item>
           <ion-label position="floating">বিকাশ নাম্বার দিন(যে নাম্বার হতে টাকা পাথিয়েছেন)</ion-label>
-          <ion-input name="bkashNumber" type="text" required></ion-input>
+          <ion-input #bikashnumber="ngModel" [(ngModel)]="submitform.bikashnumber" name="bikashnumber"  type="text" required></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">ট্রানজ্যাকশন নাম্বার দিন</ion-label>
-          <ion-input name="transactionNumber" type="text" required></ion-input>
+          <ion-label position="floating"  >ট্রানজ্যাকশন নাম্বার দিন</ion-label>
+          <ion-input  #tnsnumber="ngModel" [(ngModel)]="submitform.tnsnumber" name="tnsnumber" type="text" required></ion-input>
         </ion-item>
 
       </ion-list>
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit" expand="block">Submit</ion-button>
+          <ion-button type="submit"  (click)="save(submitform)" expand="block">Submit</ion-button>
         </ion-col>
       </ion-row>
     </form>
