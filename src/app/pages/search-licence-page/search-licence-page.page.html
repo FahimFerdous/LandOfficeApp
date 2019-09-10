@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
     </ion-buttons>
-    <ion-title>Find Licence No.</ion-title>
+    <ion-title>লাইসেন্স নাম্বার সার্চ করুন</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,27 +13,30 @@
     <form novalidate>
       <ion-list>
         <ion-item style="margin-top:10px">
-          <ion-label>Select Pourosova</ion-label>
-          <ion-select #pourosovaId="ngModel" [(ngModel)]="licence.pourosovaId" name="pourosovaId" (ionChange)="pourosovaDDLChange(licence.pourosovaId)"  value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let c of pourosova"  [value]="c.key">
+          <ion-label>পৌরসভা সিলেক্ট করুন</ion-label>
+          <ion-select #pourosovaId="ngModel" [(ngModel)]="licence.pourosovaId" name="pourosovaId"
+            (ionChange)="pourosovaDDLChange(licence.pourosovaId)" value="brown" okText="পরবর্তী" cancelText="ক্যান্সেল">
+            <ion-select-option *ngFor="let c of pourosova" [value]="c.key">
               {{ c.pourosovaName }}
-             </ion-select-option>
+            </ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item style="margin-top:10px">
-          <ion-label>Select HAT</ion-label>
-          <ion-select #hatId="ngModel" [(ngModel)]="licence.hatId" name="hatId" (ionChange)="hatDDLChange(licence.hatId)" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let c of searchHats"  [value]="c.key">
+          <ion-label>হাট সিলেক্ট করুন</ion-label>
+          <ion-select #hatId="ngModel" [(ngModel)]="licence.hatId" name="hatId"
+            (ionChange)="hatDDLChange(licence.hatId)" value="brown" okText="পরবর্তী" cancelText="ক্যান্সেল">
+            <ion-select-option *ngFor="let c of searchHats" [value]="c.key">
               {{ c.hatName }}
-             </ion-select-option>
+            </ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item style="margin-top:10px">
-          <ion-label>Select Licence No.</ion-label>
-          <ion-select #licenceId="ngModel" [(ngModel)]="licence.licenceId" name="licenceId"  value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let c of searchLicences"  [value]="c.key">
+          <ion-label>লাইসেন্স সিলেক্ট করুন</ion-label>
+          <ion-select #licenceId="ngModel" [(ngModel)]="licence.licenceId" name="licenceId" value="brown"
+            okText="পরবর্তী" cancelText="ক্যান্সেল">
+            <ion-select-option *ngFor="let c of searchLicences" [value]="c.key">
               {{ c.licenceNo }}
-             </ion-select-option>
+            </ion-select-option>
           </ion-select>
 
 
@@ -44,9 +47,9 @@
 
       <ion-row>
         <ion-col>
-          <ion-button 
-          [routerLink]="'/displaylicenceholderinfo/' + licence.pourosovaId +'/'+licence.hatId +'/'+licence.licenceId"
-           routerDirection="forward"  expand="block">Search</ion-button>
+          <ion-button
+            [routerLink]="'/displaylicenceholderinfo/' + licence.pourosovaId +'/'+licence.hatId +'/'+licence.licenceId"
+            routerDirection="forward" expand="block">সার্চ করুন</ion-button>
         </ion-col>
       </ion-row>
     </form>
