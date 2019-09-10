@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>taxformDisplay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <table >
+       <thead>
+         <th>Bikas NO.</th>
+         <th>TRX NO.</th>
+       </thead>
+        <tr *ngFor="let taxrecord of taxRecords">
+          <td>{{taxrecord.bikashnumber}}</td>
+          <td>{{taxrecord.tnsnumber}}</td>
+          <a [routerLink]="['/submittaxform/', taxrecord.key]">Edit </a>
+          <a [routerLink]=""  (click)="deleteR(taxrecord)">Delete </a>
+        </tr>
+
+    </table>
+</ion-content>

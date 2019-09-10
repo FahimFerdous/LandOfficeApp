@@ -73,8 +73,11 @@ const routes: Routes = [
     path: 'displaylicenceholderinfo/:pourosovaId/:hatId/:licenceId',
       loadChildren:()=>import('./pages/displaylicenceholderinfo/displaylicenceholderinfo.module').then(
      m=>m.DisplaylicenceholderinfoPageModule) 
-    },  { path: 'paymentprocedure', loadChildren: './pages/paymentprocedure/paymentprocedure.module#PaymentprocedurePageModule' },
-  { path: 'submittaxform', loadChildren: './pages/submittaxform/submittaxform.module#SubmittaxformPageModule' }
+    },
+  { path: 'paymentprocedure', loadChildren: './pages/paymentprocedure/paymentprocedure.module#PaymentprocedurePageModule' },
+  { path: 'submittaxform', loadChildren: './pages/submittaxform/submittaxform.module#SubmittaxformPageModule' },
+  { path: 'submittaxform/:key', loadChildren: './pages/submittaxform/submittaxform.module#SubmittaxformPageModule' },
+  { path: 'taxform-display', loadChildren: './pages/taxform-display/taxform-display.module#TaxformDisplayPageModule' }
 
 
 

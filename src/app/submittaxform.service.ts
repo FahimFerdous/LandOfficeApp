@@ -7,6 +7,16 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class SubmittaxformService {
 
+  update(productId, product) {
+    return this.db.object('/submitform/' + productId).update(product);
+  }
+  get(productId) {
+    return this.db.object('/submitform/' + productId);
+  }
+  delete(productId) {
+    return this.db.object('/submitform/' + productId).remove();
+  }
+
   constructor(private db: AngularFireDatabase) {
         
   }
