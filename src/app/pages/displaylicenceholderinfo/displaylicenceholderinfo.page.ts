@@ -2,7 +2,7 @@ import { Pourosova } from './../../model/pourosova';
 import { UserInfosService } from './../../services/user-infos.service';
 import { UserInfoPage } from './../user-info/user-info.page';
 import { Licence } from './../../model/licence';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserInfos } from '../../model/user-inofo';
@@ -23,7 +23,8 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
   searchResultFound:number;
   constructor(private route:ActivatedRoute,
     private userInfoService:UserInfosService,
-    public actionSheetCtrl: ActionSheetController) {
+    public actionSheetCtrl: ActionSheetController,
+    private router:Router) {
     console.log('constructorCalled',this.userInfos);
    }
 
@@ -76,24 +77,23 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
         {
           text: 'ইমেইল',
           handler: () => {
-            console.log(
-              'Copy link clicked on https://twitter.com/' + speaker.twitter
-            );
-            if (
-              (window as any)['cordova'] &&
-              (window as any)['cordova'].plugins.clipboard
-            ) {
-              (window as any)['cordova'].plugins.clipboard.copy(
-                'https://twitter.com/' + speaker.twitter
-              );
-            }
+            this.router.navigate(['/paymentprocedure']
+            );            
           }
         },
         {
-          text: 'ডাকযোগে'
+          text: 'ডাকযোগে',
+          handler: () => {
+            this.router.navigate(['/paymentprocedure']
+            );            
+          }
         },
         {
-          text: 'উপজিলা বহুমি অফিস হতে'
+          text: 'উপজিলা বহুমি অফিস হতে',
+          handler: () => {
+            this.router.navigate(['/paymentprocedure']
+            );            
+          }
         },
         {
           text: 'Cancel',
