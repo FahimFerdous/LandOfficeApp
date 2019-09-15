@@ -24,9 +24,8 @@ export class SignupPage {
 
   onSignup(form: NgForm) {
     this.submitted = true;
-
     if (form.valid) {
-      this.userData.signup(this.signup.username);
+      this.userData.signup(this.signup);
       this.router.navigateByUrl('/app/tabs/schedule');
     }
   }

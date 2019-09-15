@@ -1,0 +1,7 @@
+{
+  "appId": "LandOfficeApp",
+  "appName": "land office",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

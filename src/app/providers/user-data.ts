@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Events } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-
-
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase'; 
 @Injectable({
   providedIn: 'root'
 })
@@ -10,11 +11,13 @@ export class UserData {
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
-
+  userData:any;
   constructor(
     public events: Events,
-    public storage: Storage
-  ) { }
+    public storage: Storage,
+    private db: AngularFireDatabase,
+    private af:AngularFireAuth
+    ) {  this.userData=firebase.database().ref('/users');}
 
   hasFavorite(sessionName: string): boolean {
     return (this._favorites.indexOf(sessionName) > -1);
@@ -38,9 +41,20 @@ export class UserData {
     });
   }
 
-  signup(username: string): Promise<any> {
+  signup(signUpObj): Promise<any> {
+ 
     return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
-      this.setUsername(username);
+      this.af.auth
+      .createUserWithEmailAndPassword(signUpObj.email,
+        signUpObj.password).then( newUser => {      
+         this.userData.child(newUser.user.uid).update({
+           fullName: signUpObj.username,
+           email: signUpObj.email,
+           password: signUpObj.password,
+           mobile:signUpObj.mobile       
+         });
+        });
+      this.setUsername(signUpObj.username);
       return this.events.publish('user:signup');
     });
   }

@@ -2,6 +2,7 @@
   "name": "land office",
   "type": "angular",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   }
 }
