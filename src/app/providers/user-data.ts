@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase'; 
+import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,8 @@ export class UserData {
     public events: Events,
     public storage: Storage,
     private db: AngularFireDatabase,
-    private af:AngularFireAuth
+    private af:AngularFireAuth,
+    private auth:AuthService
     ) {  this.userData=firebase.database().ref('/users');}
 
   hasFavorite(sessionName: string): boolean {
@@ -34,9 +36,16 @@ export class UserData {
     }
   }
 
-  login(username: string): Promise<any> {
+  login(login): Promise<any> {
     return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
-      this.setUsername(username);
+      this.setUsername(login.username);
+    
+    
+      this.auth.signIn(login.email,login.password).then(success=>{
+  
+      }).catch(error=>{
+        alert(error.message);
+      });
       return this.events.publish('user:login');
     });
   }
@@ -67,7 +76,8 @@ export class UserData {
     });
   }
 
-  setUsername(username: string): Promise<any> {
+  setUsername(username): Promise<any> {
+
     return this.storage.set('username', username);
   }
 
