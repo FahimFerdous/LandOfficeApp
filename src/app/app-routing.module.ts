@@ -75,7 +75,7 @@ const routes: Routes = [
       m => m.DisplaylicenceholderinfoPageModule)
   },
   {
-    path: 'paymentprocedure',
+    path: 'paymentprocedure/:id',
     loadChildren: () => import('./pages/paymentprocedure/paymentprocedure.module').then(
       m => m.PaymentprocedurePageModule)
   },
@@ -93,7 +93,12 @@ const routes: Routes = [
     path: 'taxform-display',
     loadChildren: () => import('./pages/taxform-display/taxform-display.module').then(
       m => m.TaxformDisplayPageModule)
-  },  { path: 'uttaradhikari-calculator', loadChildren: './pages/uttaradhikari-calculator/uttaradhikari-calculator.module#UttaradhikariCalculatorPageModule' }
+  },
+  {
+    path: 'uttaradhikar-calculator',
+    loadChildren: () => import('./pages/uttaradhikari-calculator/uttaradhikari-calculator.module').then(
+      m => m.UttaradhikariCalculatorPageModule)
+  }
 
 
 

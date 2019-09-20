@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { UttaradikariCalculatorPipe } from './pages/uttaradikari-calculator.pipe';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -29,7 +29,7 @@ import { UttaradikariCalculatorPipe } from './pages/uttaradikari-calculator.pipe
       enabled: environment.production
     })
   ],
-  declarations: [AppComponent, UttaradikariCalculatorPipe],
+  declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
   bootstrap: [AppComponent]
 })

@@ -77,21 +77,21 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
         {
           text: 'ইমেইল',
           handler: () => {
-            this.router.navigate(['/paymentprocedure']
+            this.router.navigate(['/paymentprocedure/',1]
             );            
           }
         },
         {
           text: 'ডাকযোগে',
           handler: () => {
-            this.router.navigate(['/paymentprocedure']
+            this.router.navigate(['/paymentprocedure/',2]
             );            
           }
         },
         {
           text: 'উপজিলা বহুমি অফিস হতে',
           handler: () => {
-            this.router.navigate(['/paymentprocedure']
+            this.router.navigate(['/paymentprocedure/',3]
             );            
           }
         },

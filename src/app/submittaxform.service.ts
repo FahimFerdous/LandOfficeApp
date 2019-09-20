@@ -30,5 +30,9 @@ export class SubmittaxformService {
   return this.db.list('/submitform');
  }
 
+ saveGettingRecitType(obj) {
+   
+  return this.db.list('/GettingRecitType').push(obj);
+}
 
 }
