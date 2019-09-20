@@ -93,7 +93,8 @@ const routes: Routes = [
     path: 'taxform-display',
     loadChildren: () => import('./pages/taxform-display/taxform-display.module').then(
       m => m.TaxformDisplayPageModule)
-  }
+  },  { path: 'uttaradhikari-calculator', loadChildren: './pages/uttaradhikari-calculator/uttaradhikari-calculator.module#UttaradhikariCalculatorPageModule' }
+
 
 
 
