@@ -45,6 +45,7 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
                   
       }); 
 
+      console.log('userInfo',this.userInfos);
 
       if(this.pourosovaId !==undefined&&this.hatId!==undefined&&this.licenceId!==undefined){    
          let filteredUserInfo = (this.licenceId) ?
@@ -54,7 +55,8 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
         .includes(this.licenceId.toLowerCase())) :
          this.userInfos;      
          this.searchResultUserInfos=filteredUserInfo;  
-        this.searchResultFound=this.searchResultUserInfos.length;     
+        this.searchResultFound=this.searchResultUserInfos.length;    
+        console.log('searchingUserInfos',this.searchResultUserInfos); 
      }
      
       });

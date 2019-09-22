@@ -9,6 +9,7 @@ import { PourosovaService } from '../../services/pourosova.service';
 import { HatService } from '../../services/hat.service';
 import { LicenceService } from '../../services/licence.service';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'record-info-input-form',
@@ -22,11 +23,14 @@ export class RecordInfoInputFormPage implements OnInit ,OnDestroy{
   hats:Hat[];
   licences:Licence[];
   userInfo=new UserInfos();
+
+  userCount:UserInfos[];
   constructor(private pourosovaServices:PourosovaService,
     private hatService:HatService,
     private licenceServices:LicenceService,
     private toastController: ToastController,
-    private userInfoService:UserInfosService) { }
+    private userInfoService:UserInfosService,
+    private auth:AuthService) { }
 
   ngOnInit() {
     var allPourosova = this.pourosovaServices.getAllPourosova();
@@ -72,6 +76,24 @@ export class RecordInfoInputFormPage implements OnInit ,OnDestroy{
         
           });
 
+
+        
+          var x = this.userInfoService.getAllUserInfos();
+          this.subscription= x.snapshotChanges().pipe().subscribe(item => {
+            this.userCount=[];
+            
+            item.forEach(element => {
+              var y = element.payload.toJSON();
+              
+              y["key"] = element.key;                   
+                      this.userCount.push(y as UserInfos);
+                      
+                        
+            }); 
+      
+            console.log('userInfo',this.userCount);
+           
+          });
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -79,7 +101,12 @@ export class RecordInfoInputFormPage implements OnInit ,OnDestroy{
 
 
   async save(userInfo){
-    console.log(userInfo);
+   
+    userInfo.userUniCode='vO00'+this.userCount.length;
+    console.log('userInfo',this.userCount);
+    userInfo.entryDate = new Date().getTime();
+    //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);
+   
     await this.userInfoService.save(userInfo).then(t=>{
       const toast=  this.toastController.create({
         message:'Saved Succesfully',

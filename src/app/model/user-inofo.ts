@@ -21,5 +21,10 @@ export class UserInfos {
 
      montobbo:string;
 
+     entryDate:number;
+     entryBy:string;
+     userUniCode:string;
+
+
 
     }
