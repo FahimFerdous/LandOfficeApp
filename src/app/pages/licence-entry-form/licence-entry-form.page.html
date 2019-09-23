@@ -9,45 +9,57 @@
 
 <ion-content class="ion-padding speaker-detail">
   <div class="ion-text-center">
-
     <form novalidate>
       <ion-list>
         <ion-item>
           <ion-label>Select Pourosova</ion-label>
-          <ion-select #pourosovaId="ngModel" [(ngModel)]="licence.pourosovaId" name="pourosovaId" (ionChange)="pourosovaDDLChange(licence.pourosovaId)"  value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let c of pourosova"  [value]="c.key">
+          <ion-select
+            #pourosovaId="ngModel"
+            [(ngModel)]="licence.pourosovaId"
+            name="pourosovaId"
+            (ionChange)="pourosovaDDLChange(licence.pourosovaId)"
+            value="brown"
+            okText="Okay"
+            cancelText="Dismiss"
+          >
+            <ion-select-option *ngFor="let c of pourosova" [value]="c.key">
               {{ c.pourosovaName }}
-             </ion-select-option>
+            </ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Select HAT</ion-label>
-          <ion-select #hatId="ngModel" [(ngModel)]="licence.hatId" name="hatId" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let c of searchHats"  [value]="c.key">
+          <ion-select
+            #hatId="ngModel"
+            [(ngModel)]="licence.hatId"
+            name="hatId"
+            value="brown"
+            okText="Okay"
+            cancelText="Dismiss"
+          >
+            <ion-select-option *ngFor="let c of searchHats" [value]="c.key">
               {{ c.hatName }}
-             </ion-select-option>
-
+            </ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-input #licenceNo="ngModel" [(ngModel)]="licence.licenceNo" name="licenceNo" clearInput placeholder="Licence No"></ion-input>
-
-
+          <ion-input
+            #licenceNo="ngModel"
+            [(ngModel)]="licence.licenceNo"
+            name="licenceNo"
+            clearInput
+            placeholder="Licence No"
+          ></ion-input>
         </ion-item>
-
-
       </ion-list>
 
       <ion-row>
         <ion-col>
-          <ion-button (click)="save(licence)" type="submit" expand="block">Submit</ion-button>
+          <ion-button (click)="save(licence)" type="submit" expand="block"
+            >Submit</ion-button
+          >
         </ion-col>
       </ion-row>
     </form>
-
-
-
   </div>
-
-
 </ion-content>
