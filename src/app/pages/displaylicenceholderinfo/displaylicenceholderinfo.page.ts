@@ -25,7 +25,7 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
     private userInfoService:UserInfosService,
     public actionSheetCtrl: ActionSheetController,
     private router:Router) {
-    console.log('constructorCalled',this.userInfos);
+  
    }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
                   
       }); 
 
-      console.log('userInfo',this.userInfos);
+      
 
       if(this.pourosovaId !==undefined&&this.hatId!==undefined&&this.licenceId!==undefined){    
          let filteredUserInfo = (this.licenceId) ?
@@ -57,6 +57,28 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
          this.searchResultUserInfos=filteredUserInfo;  
         this.searchResultFound=this.searchResultUserInfos.length;    
         console.log('searchingUserInfos',this.searchResultUserInfos); 
+
+        this.searchResultUserInfos.forEach(data=>{
+             
+             var dateObj = new Date(data.entryDate);
+             var month = dateObj.getUTCMonth() + 1; //months from 1-12
+             var day = dateObj.getUTCDate();
+             var year = dateObj.getUTCFullYear();
+
+             console.log('last',year);
+             var currentDateObj = new Date();
+            // var month = dateObj.getUTCMonth() + 1; //months from 1-12
+            // var day = dateObj.getUTCDate();
+             var currentyear = currentDateObj.getUTCFullYear();
+             console.log('currernty',currentyear);
+
+
+             let bokeyaBosor=(currentyear-year);
+             console.log(bokeyaBosor);
+               let step1=(bokeyaBosor+1);
+             let bokeyaDabirSud=bokeyaBosor*(step1);
+              
+        })
      }
      
       });
