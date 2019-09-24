@@ -98,7 +98,7 @@ const routes: Routes = [
       ).then(m => m.DisplaylicenceholderinfoPageModule)
   },
   {
-    path: "paymentprocedure/:id",
+    path: "paymentprocedure/:id/:userUniCode/:key",
     loadChildren: () =>
       import("./pages/paymentprocedure/paymentprocedure.module").then(
         m => m.PaymentprocedurePageModule

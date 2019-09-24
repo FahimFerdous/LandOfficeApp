@@ -6,6 +6,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class UserInfosService {
 
+  
+
   constructor(private db: AngularFireDatabase) { }
 
  async save(userInfo) {
@@ -15,5 +17,11 @@ export class UserInfosService {
   
   getAllUserInfos(){
     return this.db.list('/userInofs');
+  }
+
+  getByKey(key) {
+    
+
+    return this.db.object('/userInofs/'+ key);
   }
 }

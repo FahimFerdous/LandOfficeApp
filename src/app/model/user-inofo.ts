@@ -22,6 +22,7 @@ export class UserInfos {
      montobbo:string;
 
      entryDate:number;
+     approved:boolean;
      entryBy:string;
      userUniCode:string;
 
