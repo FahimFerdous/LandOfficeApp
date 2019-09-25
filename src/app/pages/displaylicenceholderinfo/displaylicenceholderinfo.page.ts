@@ -21,6 +21,8 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
   userInfos:UserInfos[];
   searchResultUserInfos:UserInfos[];
   searchResultFound:number;
+
+  obj=new UserInfos();
   constructor(private route:ActivatedRoute,
     private userInfoService:UserInfosService,
     public actionSheetCtrl: ActionSheetController,
@@ -32,10 +34,10 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
     this.pourosovaId = this.route.snapshot.paramMap.get('pourosovaId');
     this.hatId = this.route.snapshot.paramMap.get('hatId');
     this.licenceId = this.route.snapshot.paramMap.get('licenceId');
-    this.userInfos = [];
+   
     var x = this.userInfoService.getAllUserInfos();
     this.subscription= x.snapshotChanges().pipe().subscribe(item => {
-      
+      this.userInfos = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
         
@@ -47,7 +49,8 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
 
       
 
-      if(this.pourosovaId !==undefined&&this.hatId!==undefined&&this.licenceId!==undefined){    
+      if(this.pourosovaId !==undefined&&this.hatId!==undefined&&this.licenceId!==undefined){  
+        this.searchResultUserInfos=[];
          let filteredUserInfo = (this.licenceId) ?
         this.userInfos.filter(p => p.pourosovaId.toLowerCase()
         .includes(this.pourosovaId.toLowerCase())&& p.hatId.toLowerCase()
@@ -57,46 +60,36 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
          this.searchResultUserInfos=filteredUserInfo;  
         this.searchResultFound=this.searchResultUserInfos.length;    
         console.log('beforSortsearchingUserInfos',this.searchResultUserInfos); 
+         
+        if (this.searchResultUserInfos.length!=0){
+          this.searchResultUserInfos
+          .sort((a, b) => new Date(b.entryDate).getTime()
+           - new Date(a.entryDate).getTime());
+           
+          this.obj= this.searchResultUserInfos.shift();
+          console.log('ob', this.obj);
+   
+         var dateObj = new Date(this.obj.entryDate);
+         var month = dateObj.getUTCMonth() + 1; //months from 1-12
+         var day = dateObj.getUTCDate();
+         var year = dateObj.getUTCFullYear();
 
-        this.searchResultUserInfos.sort((a, b) => new Date(b.entryDate).getTime() - new Date(a.entryDate).getTime());
-       let ob= this.searchResultUserInfos.shift();
-       console.log('ob',ob);
-        this.ob.forEach(data=>{
-          
-       
-             var dateObj = new Date(data.entryDate);
-             var month = dateObj.getUTCMonth() + 1; //months from 1-12
-             var day = dateObj.getUTCDate();
-             var year = dateObj.getUTCFullYear();
+         var currentDateObj = new Date();         
+         var currentyear = currentDateObj.getUTCFullYear();
 
-             console.log('last',year);
-             var currentDateObj = new Date();
-            // var month = dateObj.getUTCMonth() + 1; //months from 1-12
-            // var day = dateObj.getUTCDate();
-             var currentyear = currentDateObj.getUTCFullYear();
-             console.log('currernty',currentyear);
+         let bokeyaBosor=(currentyear-2000);
+           let step1=(bokeyaBosor+1);
+           let step2 =bokeyaBosor*step1;
+           let step3=step2/32;
+           let bokeyaDabirSud=step3*this.obj.halDabi;
+           let motDabi=bokeyaDabirSud+step1*this.obj.halDabi;
 
-
-             let bokeyaBosor=(currentyear-2017);
-               let step1=(bokeyaBosor+1);
-               let step2 =bokeyaBosor*step1;
-               let step3=step2/32;
-               let bokeyaDabirSud=step3*data.halDabi;
-               let motDabi=bokeyaDabirSud+step1*data.halDabi;
-
-               console.log('step1',step1);
-               console.log('step2',step2);
-               console.log('step3',step3);
-               console.log('bokeyaDabirSud',bokeyaDabirSud);
-               console.log('data.halDabi',data.halDabi);               
-               console.log('motDabi',motDabi);
-
-               data.motDabi=motDabi;
-
-             
-
-              
-        })
+           this.obj.motDabi=motDabi;
+           this.obj.bokeyaBosor=bokeyaBosor;
+           this.obj.bokeyaDabirSud=bokeyaDabirSud;
+           this.obj.sorbosesKhajnaPorisodherBosor=`${year}`;
+        }              
+            
      }
      
       });
@@ -110,11 +103,12 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.searchResultUserInfos=[];
   }
 
   async openSpeakerShare(speaker: any) {
-   let userUniCode= this.searchResultUserInfos[0].userUniCode;  
-   let key=this.searchResultUserInfos[0].key;
+   let userUniCode= this.obj.userUniCode;  
+   let key=this.obj.key;
    
    console.log('userUniCode',userUniCode);
     const actionSheet = await this.actionSheetCtrl.create({

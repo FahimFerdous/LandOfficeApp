@@ -84,11 +84,11 @@ export class RecordInfoInputFormPage implements OnInit ,OnDestroy{
             
             item.forEach(element => {
               var y = element.payload.toJSON();
+              if(!y["key"]){
+                y["key"] = element.key;                   
+                this.userCount.push(y as UserInfos);
+              }
               
-              y["key"] = element.key;                   
-                      this.userCount.push(y as UserInfos);
-                      
-                        
             }); 
       
             console.log('userInfo',this.userCount);
@@ -101,24 +101,31 @@ export class RecordInfoInputFormPage implements OnInit ,OnDestroy{
 
 
   async save(userInfo){
-   
-    userInfo.userUniCode='vO00'+this.userCount.length;
-    console.log('userInfo',this.userCount);
-    userInfo.entryDate = new Date().getTime();
-    userInfo.approved=true;
-    //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);
-   
-    await this.userInfoService.save(userInfo).then(t=>{
-      const toast=  this.toastController.create({
-        message:'Saved Succesfully',
-        duration:2000
-      }).then((toastData)=>{
-        toastData.present();
-      });
-    });
-     
-    this.userInfo=new UserInfos();
-    
+
+    if(!this.userCount.find(l=>l.licenceNo==userInfo.licenceNo)){
+
+          userInfo.userUniCode='vO00'+this.userCount.length;
+          userInfo.entryDate = new Date().getTime();
+          userInfo.approved=true;
+          //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);     
+          await this.userInfoService.save(userInfo).then(t=>{
+            const toast=  this.toastController.create({
+              message:'Saved Succesfully',
+              duration:2000
+            }).then((toastData)=>{
+              toastData.present();
+            });
+          });      
+          this.userInfo=new UserInfos();
+    }else{
+          const toast=  this.toastController.create({
+            message:'This Licence Number Already Assign to Another User',
+            duration:2000
+          }).then((toastData)=>{
+            toastData.present();
+          });
+    }
+
   }
 
 }

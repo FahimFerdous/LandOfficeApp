@@ -28,14 +28,14 @@ export class PaymentprocedurePage implements OnInit {
   ngOnInit() {
 
     this.key= this.route.snapshot.paramMap.get('key');
+    if(this.key!=''){
+      this.userInfoService.getByKey(this.key).snapshotChanges().pipe().subscribe(d=>{
+        var x= d.payload.toJSON();
+        x['key']=d.key;
+        this.userInfo.push(x as UserInfos);       
+      })
+    }
     
-    this.userInfoService.getByKey(this.key).snapshotChanges().pipe().subscribe(d=>{
-     
-      var x= d.payload.toJSON();
-      x['key']=d.key;
-      this.userInfo.push(x as UserInfos);
-     
-    })
   }
 
 
@@ -55,8 +55,9 @@ export class PaymentprocedurePage implements OnInit {
         gettingReciType.paymentTypeName='উপজিলা বহুমি অফিস হতে';
       }
 
-      gettingReciType.userUniCode=userUniCode;
-      let obj= this.userInfo.find(f=>f.key==this.key);
+      if(this.key!=''){
+
+        let obj= this.userInfo.find(f=>f.key==this.key);
 
       var dateObj = new Date(obj.entryDate);
       var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -66,27 +67,29 @@ export class PaymentprocedurePage implements OnInit {
       var currentDateObj = new Date();
       var currentyear = currentDateObj.getUTCFullYear();
 
-        let bokeyaBosor=(currentyear-2017);
+        let bokeyaBosor=(currentyear-2000);
         let step1=(bokeyaBosor+1);
         let step2 =bokeyaBosor*step1;
         let step3=step2/32;
         let bokeyaDabirSud=step3*obj.halDabi;
         let motDabi=bokeyaDabirSud+step1*obj.halDabi;
 
+        obj.sorbosesKhajnaPorisodherBosor=`${year}`;
         obj.motDabi=motDabi;
+        obj.bokeyaBosor=bokeyaBosor;
+        obj.bokeyaDabirSud=bokeyaDabirSud;
         obj.entryDate=new Date().getTime();
         obj.approved=false;
         console.log('obj',obj);
-
-      
+     
         this.userInfoService.save(obj).then(t=>{})
-
-      gettingReciType.entryDate = new Date().getTime();
-      this.submittaxformService.saveGettingRecitType(gettingReciType).then(success=>{       
+        gettingReciType.userUniCode=userUniCode;
+       gettingReciType.entryDate = new Date().getTime();
+       this.submittaxformService.saveGettingRecitType(gettingReciType).then(success=>{       
        })
-     // })
 
-
+      }
+     
    
   }
 

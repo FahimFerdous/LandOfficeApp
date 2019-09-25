@@ -18,48 +18,48 @@
                 <h3> কোনো রেকর্ড পাওয়া যায়নি !</h3>
               </ion-item>
             </ion-card-content>
-            <ion-card-content>
-              <ion-list *ngFor="let userinfo of searchResultUserInfos">
+            <ion-card-content *ngIf="searchResultFound!=0">
+              <ion-list >
                 <ion-item>
-                  <h3>মালিকের নাম : <span style="font-size:15px"><b>{{userinfo.malikerName}}</b></span></h3>
+                  <h3>মালিকের নাম : <span style="font-size:15px"><b>{{obj.malikerName}}</b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>ইউনিয়ন : <span style="font-size:15px"><b>{{userinfo.union}} </b></span></h3>
+                  <h3>ইউনিয়ন : <span style="font-size:15px"><b>{{obj.union}} </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>মৌজা : <span style="font-size:15px"><b>{{userinfo.mouja}} </b></span></h3>
+                  <h3>মৌজা : <span style="font-size:15px"><b>{{obj.mouja}} </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>করের ধরন : <span style="font-size:15px"><b>{{userinfo.korerDhoron}}</b></span></h3>
+                  <h3>করের ধরন : <span style="font-size:15px"><b>{{obj.korerDhoron}}</b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>হোল্ডিং নং : <span style="font-size:15px"><b>{{userinfo.holdingNo}} ই </b></span></h3>
+                  <h3>হোল্ডিং নং : <span style="font-size:15px"><b>{{obj.holdingNo}} ই </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>জমির পরিমাণ : <span style="font-size:15px"><b>{{userinfo.jomirPoriman}} শতাংশ </b></span></h3>
+                  <h3>জমির পরিমাণ : <span style="font-size:15px"><b>{{obj.jomirPoriman}} শতাংশ </b></span></h3>
                 </ion-item>
                 <ion-item>
                   <h3>সর্বশেষ খাজনা পরিশোধের বছর : <span
-                      style="font-size:15px"><b>{{userinfo.sorbosesKhajnaPorisodherBosor}} </b></span></h3>
+                      style="font-size:15px"><b>{{obj.sorbosesKhajnaPorisodherBosor}} </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>বকেয়া বছর : <span style="font-size:15px"><b>{{userinfo.bokeyaBosor}} </b></span></h3>
+                  <h3>বকেয়া বছর : <span style="font-size:15px"><b>{{obj.bokeyaBosor}} </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>বকেয়া দাবি : <span style="font-size:15px"><b>{{userinfo.bokeyaDabi}} টাকা </b></span></h3>
+                  <h3>বকেয়া দাবি : <span style="font-size:15px"><b>{{obj.bokeyaDabi}} টাকা </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>বকেয়া দাবির সুদ : <span style="font-size:15px"><b>{{userinfo.bokeyaDabirSud}} টাকা </b></span>
+                  <h3>বকেয়া দাবির সুদ : <span style="font-size:15px"><b>{{obj.bokeyaDabirSud}} টাকা </b></span>
                   </h3>
                 </ion-item>
                 <ion-item>
-                  <h3>হাল দাবি : <span style="font-size:15px"><b>{{userinfo.halDabi}} টাকা </b></span></h3>
+                  <h3>হাল দাবি : <span style="font-size:15px"><b>{{obj.halDabi}} টাকা </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3>মোট দাবি : <span style="font-size:15px"><b>{{userinfo.motDabi}} টাকা </b></span></h3>
+                  <h3>মোট দাবি : <span style="font-size:15px"><b>{{obj.motDabi}} টাকা </b></span></h3>
                 </ion-item>
                 <ion-item>
-                  <h3> মন্তব্য : <span style="font-size:15px"><b>{{userinfo.montobbo}} </b></span></h3>
+                  <h3> মন্তব্য : <span style="font-size:15px"><b>{{obj.montobbo}} </b></span></h3>
                 </ion-item>
 
 
