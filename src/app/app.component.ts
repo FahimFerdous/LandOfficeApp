@@ -1,20 +1,25 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { SwUpdate } from '@angular/service-worker';
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Router } from "@angular/router";
+import { SwUpdate } from "@angular/service-worker";
 
-import { Events, MenuController, Platform, ToastController } from '@ionic/angular';
+import {
+  Events,
+  MenuController,
+  Platform,
+  ToastController
+} from "@ionic/angular";
 
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
 
-import { Storage } from '@ionic/storage';
+import { Storage } from "@ionic/storage";
 
-import { UserData } from './providers/user-data';
+import { UserData } from "./providers/user-data";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
@@ -40,34 +45,35 @@ export class AppComponent implements OnInit {
       icon: 'information-circle'
     }, */
     {
-      title: 'Create User Info',
-      url: '/record-info-input-form',
-      icon: 'contacts'
+      title: "Create User Info",
+      url: "/record-info-input-form",
+      icon: "contacts"
     },
     {
-      title: 'Search Licence',
-      url: '/search-licence-page',
-      icon: 'information-circle'
+      title: "Search Licence",
+      url: "/search-licence-page",
+      icon: "information-circle"
     },
     {
-      title: ' pourosova entry form',
-      url: '/pourosova-entry-form',
-      icon: 'map'
+      title: " pourosova entry form",
+      url: "/pourosova-entry-form",
+      icon: "map"
     },
     {
-      title: ' hate entry',
-      url: '/hat-entry-form',
-      icon: 'calendar'
+      title: " hate entry",
+      url: "/hat-entry-form",
+      icon: "calendar"
     },
     {
-      title: 'licence entry',
-      url: '/licence-entry-form',
-      icon: 'calendar'
+      title: "licence entry",
+      url: "/licence-entry-form",
+      icon: "calendar"
+    },
+    {
+      title: "Approve Payment",
+      url: "/aprovepayment",
+      icon: "calendar"
     }
-    
-
-   
-   
   ];
   loggedIn = false;
 
@@ -81,7 +87,7 @@ export class AppComponent implements OnInit {
     private storage: Storage,
     private userData: UserData,
     private swUpdate: SwUpdate,
-    private toastCtrl: ToastController,
+    private toastCtrl: ToastController
   ) {
     this.initializeApp();
   }
@@ -92,9 +98,9 @@ export class AppComponent implements OnInit {
 
     this.swUpdate.available.subscribe(async res => {
       const toast = await this.toastCtrl.create({
-        message: 'Update available!',
+        message: "Update available!",
         showCloseButton: true,
-        position: 'bottom',
+        position: "bottom",
         closeButtonText: `Reload`
       });
 
@@ -127,28 +133,28 @@ export class AppComponent implements OnInit {
   }
 
   listenForLoginEvents() {
-    this.events.subscribe('user:login', () => {
+    this.events.subscribe("user:login", () => {
       this.updateLoggedInStatus(true);
     });
 
-    this.events.subscribe('user:signup', () => {
+    this.events.subscribe("user:signup", () => {
       this.updateLoggedInStatus(true);
     });
 
-    this.events.subscribe('user:logout', () => {
+    this.events.subscribe("user:logout", () => {
       this.updateLoggedInStatus(false);
     });
   }
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
+      return this.router.navigateByUrl("/app/tabs/schedule");
     });
   }
 
   openTutorial() {
     this.menu.enable(false);
-    this.storage.set('ion_did_tutorial', false);
-    this.router.navigateByUrl('/tutorial');
+    this.storage.set("ion_did_tutorial", false);
+    this.router.navigateByUrl("/tutorial");
   }
 }

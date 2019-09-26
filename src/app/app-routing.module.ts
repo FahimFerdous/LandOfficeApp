@@ -159,6 +159,20 @@ const routes: Routes = [
       import("./pages/vplease-nobaion/vplease-nobaion.module").then(
         m => m.VPleaseNobaionPageModule
       )
+  },
+  {
+    path: "aprovepayment",
+    loadChildren: () =>
+      import("./pages/aprovepayment/aprovepayment.module").then(
+        m => m.AprovepaymentPageModule
+      )
+  },
+  {
+    path: "aprovepayment-details",
+    loadChildren: () =>
+      import("./pages/aprovepayment-details/aprovepayment-details.module").then(
+        m => m.AprovepaymentDetailsPageModule
+      )
   }
 ];
 

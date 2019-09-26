@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Approve Payment Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content">
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-stretch">
+        <ion-col size="12" size-md="6">
+          <ion-card class="speaker-card">
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <h3>
+                    মালিকের নাম :
+                    <span style="font-size:15px"><b>Babu Haider</b></span>
+                  </h3>
+                </ion-item>
+
+                <ion-item>
+                  <h3>
+                    মোট দাবি :
+                    <span style="font-size:15px"><b>৩৪০০ টাকা </b></span>
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    প্রদত্ত টাকার পরিমাণ :
+                    <span style="font-size:15px"><b>৩৪০০ টাকা </b></span>
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <ion-label>বাকি টাকার পরিমানঃ </ion-label>
+                  <br />
+                  <ion-input
+                    name="Name"
+                    clearInput
+                    placeholder="বাকি টাকা"
+                  ></ion-input>
+                </ion-item>
+              </ion-list>
+              <ion-row>
+                <ion-col>
+                  <ion-button type="submit" expand="block">APPROVE </ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-button color="danger" type="submit" expand="block"
+                    >DECLINE
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>

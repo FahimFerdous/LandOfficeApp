@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment Approve Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider sticky> </ion-item-divider>
+
+      <ion-item-sliding>
+        <ion-item routerLink="/aprovepayment-details">
+          <ion-label>
+            <h3>Abdul Latif</h3>
+            <p>
+              Due Amount: <span><b>3200</b></span>
+            </p>
+          </ion-label>
+        </ion-item>
+        <ion-item routerLink="/aprovepayment-details">
+          <ion-label>
+            <h3>Babu Haider</h3>
+            <p>
+              Due Amount: <span><b>2200</b></span>
+            </p>
+          </ion-label>
+        </ion-item>
+        <ion-item routerLink="/aprovepayment-details">
+          <ion-label>
+            <h3>Shamsul Hoque</h3>
+            <p>
+              Due Amount: <span><b>4000</b></span>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
