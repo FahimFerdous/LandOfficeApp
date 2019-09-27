@@ -73,6 +73,11 @@ export class AppComponent implements OnInit {
       title: "Approve Payment",
       url: "/aprovepayment",
       icon: "calendar"
+    },
+    {
+      title: "Add Employee Info",
+      url: "/add-employee-info",
+      icon: "calendar"
     }
   ];
   loggedIn = false;

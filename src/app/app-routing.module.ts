@@ -173,7 +173,14 @@ const routes: Routes = [
       import("./pages/aprovepayment-details/aprovepayment-details.module").then(
         m => m.AprovepaymentDetailsPageModule
       )
+  },
+  { 
+    path: 'add-employee-info', 
+    loadChildren: ()=>import('./pages/add-employee-info/add-employee-info.module').then(
+      m=>m.AddEmployeeInfoPageModule
+    ) 
   }
+
 ];
 
 @NgModule({
