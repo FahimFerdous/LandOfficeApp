@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserInfosService } from '../../services/user-infos.service';
+import { Subscription } from 'rxjs';
+import { UserInfos } from '../../model/user-inofo';
 
 @Component({
   selector: 'aprovepayment',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AprovepaymentPage implements OnInit {
 
-  constructor() { }
+  subscription: Subscription;
+ userInfos:UserInfos[];
+
+  constructor( private userInfoService:UserInfosService) { }
 
   ngOnInit() {
+    var x = this.userInfoService.getAllUserInfos();
+    this.subscription= x.snapshotChanges().pipe().subscribe(item => {
+      this.userInfos = [];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        
+        y["key"] = element.key;                   
+                this.userInfos.push(y as UserInfos);
+                
+                  
+      });
+      console.log(this.userInfos);
+      
+    });
   }
+
+
 
 }
