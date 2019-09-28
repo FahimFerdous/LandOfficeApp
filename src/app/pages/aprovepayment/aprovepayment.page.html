@@ -13,7 +13,7 @@
       <ion-item-divider sticky> </ion-item-divider>
 
       <ion-item-sliding  *ngFor="let user of userInfos">
-        <ion-item routerLink="/aprovepayment-details">
+        <ion-item [routerLink]="['/aprovepayment-details',user.key]">
           <ion-label>
             <h3>{{user.malikerName}}</h3>
             <p>

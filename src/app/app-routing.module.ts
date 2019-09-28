@@ -111,6 +111,7 @@ const routes: Routes = [
         m => m.SubmittaxformPageModule
       )
   },
+ 
   {
     path: "submittaxform/:key",
     loadChildren: () =>
@@ -168,7 +169,7 @@ const routes: Routes = [
       )
   },
   {
-    path: "aprovepayment-details",
+    path: "aprovepayment-details/:key",
     loadChildren: () =>
       import("./pages/aprovepayment-details/aprovepayment-details.module").then(
         m => m.AprovepaymentDetailsPageModule
