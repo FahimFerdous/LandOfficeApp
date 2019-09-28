@@ -7,13 +7,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="outer-content">
+<ion-content class="outer-content"  >
   <ion-list>
     <ion-grid fixed>
       <ion-row class="ion-align-items-stretch">
-        <ion-col size="12" size-md="12">
-          <ion-card class="speaker-card">
-            <ion-card-header style="padding-bottom: 0px;">
+        <ion-col size="12" size-md="12"  *ngFor="let taxrecord of taxRecords">
+          <ion-card class="speaker-card" >
+            <ion-card-header style="padding-bottom: 0px;" >
               <ion-item detail="false" lines="none">
                 <img
                   style="height:100px; width:100px; border-radius: 50%; margin-left:25%"
@@ -22,7 +22,7 @@
                 />
               </ion-item>
               <ion-item>
-                <h3><b>মোসাঃ আলপনা ইয়াসমিন</b></h3>
+                <h3><b>{{taxRecords.empname}}</b></h3>
               </ion-item>
             </ion-card-header>
 
@@ -51,49 +51,3 @@
             </ion-card-content>
           </ion-card>
         </ion-col>
-
-        <!--Temp Second Item-->
-        <ion-col size="12" size-md="12">
-          <ion-card class="speaker-card">
-            <ion-card-header style="padding-bottom: 0px;">
-              <ion-item detail="false" lines="none">
-                <img
-                  style="height:100px; width:100px; border-radius: 50%; margin-left:25%"
-                  src="assets/img/employee-1.PNG"
-                  alt="Speaker profile pic"
-                />
-              </ion-item>
-              <ion-item>
-                <h3><b>মোসাঃ আলপনা ইয়াসমিন</b></h3>
-              </ion-item>
-            </ion-card-header>
-
-            <ion-card-content style="padding-top: 0px; padding-bottom: 0px;">
-              <ion-list>
-                <ion-item>
-                  <h3>সহকারী কমিশনার (ভূমি)</h3>
-                </ion-item>
-
-                <ion-item>
-                  <h3>মোবাইলঃ <b>01705430525</b></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>ফোন-অফিসঃ <b>0723356028</b></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>ই-মেইলঃ <b>aclandbagha2@gmail.com</b></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>ব্যাচ -বিসিএসঃ <b>33</b></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>বর্তমান কর্মস্থলে যোগদানের তারিখঃ <b>2019-02-13</b></h3>
-                </ion-item>
-              </ion-list>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-list>
-</ion-content>

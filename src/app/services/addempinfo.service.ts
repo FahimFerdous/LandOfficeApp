@@ -13,4 +13,7 @@ export class AddempinfoService {
    
     return this.db.list('/Addemp').push(Addemp);
   }
+  getAllAddempform(){
+    return this.db.list('/Addemp');
+   }
 }
