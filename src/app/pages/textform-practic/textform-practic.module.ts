@@ -1,4 +1,3 @@
-import { Addemp } from './../../model/AddEmploye';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddEmployeeInfoPage } from './add-employee-info.page';
+import { TextformPracticPage } from './textform-practic.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: AddEmployeeInfoPage
+    component: TextformPracticPage
   }
 ];
 
@@ -20,11 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    FormsModule
+    RouterModule.forChild(routes)
   ],
-  declarations: [AddEmployeeInfoPage]
+  declarations: [TextformPracticPage]
 })
-export class AddEmployeeInfoPageModule {
-
-}
+export class TextformPracticPageModule {}

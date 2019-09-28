@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>textform-practic</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <table border="2px">
+    <thead>
+      <th>Bikash N0</th>
+      <th>tns no</th>
+      <th>Edit Action</th>
+      <th>delete Action</th>
+    </thead>
+    <tr *ngFor="let submitarry of subformarrays">
+      <td>{{submitarry.bikashnumber}}</td>
+      <td>{{submitarry.tnsnumber}}</td>
+      <td><a [routerLink]="['/submittaxform/', submitarry.key]">Edit </a></td>
+         <td><a [routerLink]=""  (click)="delete(submitarry)">Delete </a></td> 
+    </tr>
+  </table>
+  
+</ion-content>
