@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubmittaxformService } from '../../submittaxform.service';
 import { AuthService } from '../../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -21,7 +21,8 @@ export class PaymentprocedurePage implements OnInit {
    private submittaxformService: SubmittaxformService,
    private userInfoService:UserInfosService,
    private authServic:AuthService ,
-   private afAuth: AngularFireAuth, ) { 
+   private afAuth: AngularFireAuth,
+   private router:Router ) { 
 
   }
 
@@ -81,13 +82,18 @@ export class PaymentprocedurePage implements OnInit {
         obj.entryDate=new Date().getTime();
         obj.approved=false;
         console.log('obj',obj);
-     
-        this.userInfoService.save(obj).then(t=>{})
-        gettingReciType.userUniCode=userUniCode;
-       gettingReciType.entryDate = new Date().getTime();
-       this.submittaxformService.saveGettingRecitType(gettingReciType).then(success=>{       
-       })
 
+        gettingReciType.userUniCode=userUniCode;
+        gettingReciType.entryDate = new Date().getTime();
+        this.submittaxformService.saveGettingRecitType(gettingReciType).then(success=>{       
+          //console.log(success.key);
+        })
+        this.userInfoService.save(obj).then(t=>{
+          this.router.navigate(['/submittaxform/',t.key])
+          console.log(t.key);
+        })
+       
+      
       }
      
    

@@ -13,7 +13,8 @@ export class AprovepaymentPage implements OnInit {
   subscription: Subscription;
  userInfos:UserInfos[];
 
-  constructor( private userInfoService:UserInfosService) { }
+  constructor( private userInfoService:UserInfosService,
+    ) { }
 
   ngOnInit() {
     var x = this.userInfoService.getAllUserInfos();
@@ -21,17 +22,18 @@ export class AprovepaymentPage implements OnInit {
       this.userInfos = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
+        if(y['approved']==false){
+            y["key"] = element.key;                   
+            this.userInfos.push(y as UserInfos);
+        }  
         
-        y["key"] = element.key;                   
-                this.userInfos.push(y as UserInfos);
-                
-                  
       });
       console.log(this.userInfos);
       
     });
   }
 
+ 
 
 
 }

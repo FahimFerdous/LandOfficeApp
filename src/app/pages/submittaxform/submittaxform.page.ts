@@ -25,15 +25,16 @@ export class SubmittaxformPage {
     private afAuth: AngularFireAuth,private route:ActivatedRoute ) { 
 
      this.key= this.route.snapshot.paramMap.get('key');
-     console.log(this.key);
+    
       
-     if (this.key) this.submitformServices.get(this.key).valueChanges()
-     .subscribe(p => {
+    //  if (this.key) this.submitformServices.get(this.key).valueChanges()
+    //  .subscribe(p => {
      
-      const obj=  Object.assign(this.submitform,p);     
-          this.submitform=obj;
-     });
-    }
+    //   const obj=  Object.assign(this.submitform,p);     
+    //       this.submitform=obj;
+    //  });
+
+     }
 
 
   async save(submitform){
@@ -45,11 +46,12 @@ export class SubmittaxformPage {
   
     submitform.entrydate=new Date().getTime();
 
-
-    if(this.key){
-        this.submitformServices.update(this.key,submitform);
-    }
-else{
+    
+    
+     //   submitform.key=this.key;
+     //   this.submitformServices.update(this.key,submitform);
+   
+  submitform.key=this.key;
   await this.submitformServices.save(submitform).then(t=>{
     this.toast=  this.toastController.create({
       message:'verified',
@@ -58,10 +60,10 @@ else{
       toastData.present();
     });
   });
-}
+
    
      
-    this.submitform =new submitform();
+   // this.submitform =new submitform();
     
   }
 

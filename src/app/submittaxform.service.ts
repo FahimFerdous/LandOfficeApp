@@ -30,7 +30,7 @@ export class SubmittaxformService {
         
   }
 
-  save(submitform) {
+ async save(submitform) {
    
    return this.db.list('/submitform').push(submitform);
  }

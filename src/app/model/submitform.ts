@@ -5,5 +5,5 @@ export class submitform {
     tnsnumber:string;
     entryby:string;
     entrydate:number;
-     
+    key:string;  
     }

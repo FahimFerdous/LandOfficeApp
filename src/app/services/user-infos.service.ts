@@ -19,9 +19,7 @@ export class UserInfosService {
     return this.db.list('/userInofs');
   }
 
-  getByKey(key) {
-    
-
+  getByKey(key) {    
     return this.db.object('/userInofs/'+ key);
   }
 }
