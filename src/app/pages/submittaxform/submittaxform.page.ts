@@ -54,14 +54,15 @@ export class SubmittaxformPage {
   submitform.key=this.key;
   await this.submitformServices.save(submitform).then(t=>{
     this.toast=  this.toastController.create({
-      message:'verified',
+      message:'Payment Succesfull !',
       duration:2000
     }).then((toastData)=>{
       toastData.present();
     });
   });
 
-   
+   this.submitform.bikashnumber='';
+   this.submitform.tnsnumber='';
      
    // this.submitform =new submitform();
     

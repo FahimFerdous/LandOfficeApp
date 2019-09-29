@@ -76,11 +76,12 @@ export class PaymentprocedurePage implements OnInit {
         let motDabi=bokeyaDabirSud+step1*obj.halDabi;
 
         obj.sorbosesKhajnaPorisodherBosor=`${year}`;
-        obj.motDabi=motDabi;
+        obj.motDabi=(motDabi+obj.bokeyaDabi);
         obj.bokeyaBosor=bokeyaBosor;
         obj.bokeyaDabirSud=bokeyaDabirSud;
         obj.entryDate=new Date().getTime();
         obj.approved=false;
+        obj.prodottoTakarPoriman=0;
         console.log('obj',obj);
 
         gettingReciType.userUniCode=userUniCode;

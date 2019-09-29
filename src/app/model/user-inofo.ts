@@ -25,7 +25,12 @@ export class UserInfos {
      approved:boolean;
      entryBy:string;
      userUniCode:string;
-
+     
+     //extra for view porpose
+     bkasNumber:string;
+     transactionNo:string;
+     trnxEntryDate:number;
+     prodottoTakarPoriman:number;
 
 
     }

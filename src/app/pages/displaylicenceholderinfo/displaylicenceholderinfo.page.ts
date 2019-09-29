@@ -40,9 +40,12 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
       this.userInfos = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
-        
-        y["key"] = element.key;                   
-                this.userInfos.push(y as UserInfos);
+
+        if(y['approved']==true){
+          y["key"] = element.key;                   
+          this.userInfos.push(y as UserInfos);
+        }
+       
                 
                   
       }); 
@@ -84,7 +87,7 @@ export class DisplaylicenceholderinfoPage implements OnInit,OnDestroy {
            let bokeyaDabirSud=step3*this.obj.halDabi;
            let motDabi=bokeyaDabirSud+step1*this.obj.halDabi;
 
-           this.obj.motDabi=motDabi;
+           this.obj.motDabi=(motDabi+this.obj.bokeyaDabi);
            this.obj.bokeyaBosor=bokeyaBosor;
            this.obj.bokeyaDabirSud=bokeyaDabirSud;
            this.obj.sorbosesKhajnaPorisodherBosor=`${year}`;

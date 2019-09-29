@@ -28,25 +28,41 @@
                     <span style="font-size:15px"><b>{{userInfos.motDabi}} টাকা </b></span>
                   </h3>
                 </ion-item>
+
                 <ion-item>
+                  <h3>
+                    bikas no :
+                    <span style="font-size:15px"><b>{{userInfos.bkasNumber}}  </b></span>
+                  </h3>
+                </ion-item>
+
+                <ion-item>
+                  <h3>
+                    transaction no :
+                    <span style="font-size:15px"><b>{{userInfos.transactionNo}}  </b></span>
+                  </h3>
+                </ion-item>
+
+                <!-- <ion-item>
                   <h3>
                     প্রদত্ত টাকার পরিমাণ :
                     <span style="font-size:15px"><b>৩৪০০ টাকা </b></span>
                   </h3>
-                </ion-item>
+                </ion-item> -->
                 <ion-item>
-                  <ion-label>বাকি টাকার পরিমানঃ </ion-label>
+                  <ion-label> প্রদত্ত টাকার পরিমাণ :</ion-label>
                   <br />
                   <ion-input
+                  [(ngModel)]="userInfos.prodottoTakarPoriman"
                     name="Name"
                     clearInput
-                    placeholder="বাকি টাকা"
+                    placeholder="টাকা"
                   ></ion-input>
                 </ion-item>
               </ion-list>
               <ion-row>
                 <ion-col>
-                  <ion-button type="submit" expand="block">APPROVE </ion-button>
+                  <ion-button type="submit" (click)="approved(userInfos)" expand="block">APPROVE </ion-button>
                 </ion-col>
               </ion-row>
               <ion-row>

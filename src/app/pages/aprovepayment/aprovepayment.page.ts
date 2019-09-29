@@ -28,7 +28,7 @@ export class AprovepaymentPage implements OnInit {
         }  
         
       });
-      console.log(this.userInfos);
+    
       
     });
   }
