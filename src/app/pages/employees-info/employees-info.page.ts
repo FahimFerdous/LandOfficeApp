@@ -9,22 +9,23 @@ import { element } from 'protractor';
   styleUrls: ['./employees-info.page.scss'],
 })
 export class EmployeesInfoPage implements OnInit {
-textRecords=[];
+empInfos=[];
 subscription:Subscription;
 
   constructor(private Addemp:AddempinfoService) { }
 
   ngOnInit() {
   var empFormdata=this.Addemp.getAllAddempform();
-  console.log(empFormdata);
+ 
   this.subscription=empFormdata.snapshotChanges().pipe().subscribe(item=>{
-   this.textRecords=[];
+   this.empInfos=[];
    item.forEach(element=>{
      var y=element.payload.toJSON();
      y["key"]=element.key;
-     this.textRecords.push(y);
-     console.log(this.textRecords);
+     this.empInfos.push(y);
+     
    });
+   console.log(this.empInfos);
   });
   }
 
