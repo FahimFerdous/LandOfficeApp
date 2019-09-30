@@ -5,7 +5,7 @@ export const environment = {
     authDomain: "vhumi-office-web.firebaseapp.com",
     databaseURL: "https://vhumi-office-web.firebaseio.com",
     projectId: "vhumi-office-web",
-    storageBucket: "",
+    storageBucket: "vhumi-office-web.appspot.com",
     messagingSenderId: "521664469748",
     appId: "1:521664469748:web:deae5396d0cce17f"
   }

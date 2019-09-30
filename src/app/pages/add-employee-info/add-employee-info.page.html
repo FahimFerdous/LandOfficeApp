@@ -50,7 +50,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">Image</ion-label>
-          <ion-input #empimage="ngModel" [(ngModel)]="Addemp.empimage"  name="image" type="file"></ion-input>
+          <ion-input  (change)="uploadFile($event.target.files)" type="file"></ion-input>
           <!-- <ion-input #union="ngModel" [(ngModel)]="userInfo.union" name="union" type="text" name="title" required></ion-input> -->
         </ion-item>
       </ion-list>

@@ -7,4 +7,8 @@ export class Addemp{
     empbatch:string;
     empfax:string;
     empimage:object;
+     imageUrlFile: File;
+     entryDate: number;
+    imageUrlName: string;
+    imageUrl: any;
 }

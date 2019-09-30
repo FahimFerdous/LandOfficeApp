@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     })
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar],
+  providers: [InAppBrowser, SplashScreen, StatusBar,AngularFireStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
