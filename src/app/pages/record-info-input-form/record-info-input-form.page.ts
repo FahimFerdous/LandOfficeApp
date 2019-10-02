@@ -100,13 +100,30 @@ export class RecordInfoInputFormPage implements OnInit ,OnDestroy{
   }
 
 
-  async save(userInfo){
+  async save(userInfo:UserInfos){
 
     if(!this.userCount.find(l=>l.licenceNo==userInfo.licenceNo)){
 
           userInfo.userUniCode='vO00'+this.userCount.length;
           userInfo.entryDate = new Date().getTime();
           userInfo.approved=true;
+
+
+          userInfo.halDabi=(parseInt(userInfo.jomirPoriman)*2.5);
+          var currentDateObj = new Date();
+          var currentyear = currentDateObj.getUTCFullYear();
+          userInfo.bokeyaBosor=(currentyear-parseInt(userInfo.sorbosesKhajnaPorisodherBosor));
+          let step1=(userInfo.bokeyaBosor+1);
+          let step2 =userInfo.bokeyaBosor*step1;
+          let step3=step2/32;
+          let bokeyaDabirSud=step3*userInfo.halDabi;
+          let motDabi=bokeyaDabirSud+step1*userInfo.halDabi;
+  
+          userInfo.sorbosesKhajnaPorisodherBosor=`${currentyear}`;
+          userInfo.motDabi=(motDabi+userInfo.bokeyaDabi);
+          
+          userInfo.bokeyaDabirSud=bokeyaDabirSud;
+          
           //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);     
           await this.userInfoService.save(userInfo).then(t=>{
             const toast=  this.toastController.create({
