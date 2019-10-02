@@ -1,64 +1,66 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SubmittaxformService } from '../../submittaxform.service';
-import { AuthService } from '../../services/auth.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UserInfosService } from '../../services/user-infos.service';
-import { UserInfos } from '../../model/user-inofo';
-import { Key } from 'protractor';
-
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { SubmittaxformService } from "../../submittaxform.service";
+import { AuthService } from "../../services/auth.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { UserInfosService } from "../../services/user-infos.service";
+import { UserInfos } from "../../model/user-inofo";
+import { Key } from "protractor";
 
 @Component({
-  selector: 'paymentprocedure',
-  templateUrl: './paymentprocedure.page.html',
-  styleUrls: ['./paymentprocedure.page.scss'],
+  selector: "paymentprocedure",
+  templateUrl: "./paymentprocedure.page.html",
+  styleUrls: ["./paymentprocedure.page.scss"]
 })
 export class PaymentprocedurePage implements OnInit {
-  id:string;
-  userInfo:UserInfos[]=[];
-  key:string;
-  constructor(private route:ActivatedRoute,
-   private submittaxformService: SubmittaxformService,
-   private userInfoService:UserInfosService,
-   private authServic:AuthService ,
-   private afAuth: AngularFireAuth,
-   private router:Router ) { 
-
-  }
+  id: string;
+  userInfo: UserInfos[] = [];
+  key: string;
+  constructor(
+    private route: ActivatedRoute,
+    private submittaxformService: SubmittaxformService,
+    private userInfoService: UserInfosService,
+    private authServic: AuthService,
+    private afAuth: AngularFireAuth,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-
-    this.key= this.route.snapshot.paramMap.get('key');
-    if(this.key!=''){
-      this.userInfoService.getByKey(this.key).snapshotChanges().pipe().subscribe(d=>{
-        var x= d.payload.toJSON();
-        x['key']=d.key;
-        this.userInfo.push(x as UserInfos);       
-      })
+    this.key = this.route.snapshot.paramMap.get("key");
+    if (this.key != "") {
+      this.userInfoService
+        .getByKey(this.key)
+        .snapshotChanges()
+        .pipe()
+        .subscribe(d => {
+          var x = d.payload.toJSON();
+          x["key"] = d.key;
+          this.userInfo.push(x as UserInfos);
+        });
     }
-    
   }
 
+  typeofGettingRecit() {
+    let gettingReciType = {
+      paymentTypeName: "",
+      userUniCode: "",
+      entryDate: 0
+    };
+    this.id = this.route.snapshot.paramMap.get("id");
+    let userUniCode = this.route.snapshot.paramMap.get("userUniCode");
 
-  typeofGettingRecit(){
+    if (this.id == "1") {
+      gettingReciType.paymentTypeName = "ইমেইল";
+    }
+    if (this.id == "2") {
+      gettingReciType.paymentTypeName = "ডাকযোগে";
+    }
+    if (this.id == "3") {
+      gettingReciType.paymentTypeName = "উপজিলা বহুমি অফিস হতে";
+    }
 
-    let gettingReciType={paymentTypeName:'',userUniCode:'',entryDate:0};
-      this.id= this.route.snapshot.paramMap.get('id');
-    let userUniCode= this.route.snapshot.paramMap.get('userUniCode');
-  
-      if(this.id=='1'){
-        gettingReciType.paymentTypeName='ইমেইল';
-      }
-      if(this.id=='2'){
-        gettingReciType.paymentTypeName='ডাকযোগে';
-      }
-      if(this.id=='3'){
-        gettingReciType.paymentTypeName='উপজিলা বহুমি অফিস হতে';
-      }
-
-      if(this.key!=''){
-
-        let obj= this.userInfo.find(f=>f.key==this.key);
+    if (this.key != "") {
+      let obj = this.userInfo.find(f => f.key == this.key);
 
       var dateObj = new Date(obj.entryDate);
       var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -68,37 +70,33 @@ export class PaymentprocedurePage implements OnInit {
       var currentDateObj = new Date();
       var currentyear = currentDateObj.getUTCFullYear();
 
-        let bokeyaBosor=(currentyear-2000);
-        let step1=(bokeyaBosor+1);
-        let step2 =bokeyaBosor*step1;
-        let step3=step2/32;
-        let bokeyaDabirSud=step3*obj.halDabi;
-        let motDabi=bokeyaDabirSud+step1*obj.halDabi;
+      let bokeyaBosor = currentyear - year;
+      let step1 = bokeyaBosor + 1;
+      let step2 = bokeyaBosor * step1;
+      let step3 = step2 / 32;
+      let bokeyaDabirSud = step3 * obj.halDabi;
+      let motDabi = bokeyaDabirSud + step1 * obj.halDabi;
 
-        obj.sorbosesKhajnaPorisodherBosor=`${year}`;
-        obj.motDabi=(motDabi+obj.bokeyaDabi);
-        obj.bokeyaBosor=bokeyaBosor;
-        obj.bokeyaDabirSud=bokeyaDabirSud;
-        obj.entryDate=new Date().getTime();
-        obj.approved=false;
-        obj.prodottoTakarPoriman=0;
-        console.log('obj',obj);
+      obj.sorbosesKhajnaPorisodherBosor = `${year}`;
+      obj.motDabi = motDabi + parseInt(obj.bokeyaDabi);
+      obj.bokeyaBosor = bokeyaBosor;
+      obj.bokeyaDabirSud = bokeyaDabirSud;
+      obj.entryDate = new Date().getTime();
+      obj.approved = false;
+      obj.prodottoTakarPoriman = 0;
+      console.log("obj", obj);
 
-        gettingReciType.userUniCode=userUniCode;
-        gettingReciType.entryDate = new Date().getTime();
-        this.submittaxformService.saveGettingRecitType(gettingReciType).then(success=>{       
+      gettingReciType.userUniCode = userUniCode;
+      gettingReciType.entryDate = new Date().getTime();
+      this.submittaxformService
+        .saveGettingRecitType(gettingReciType)
+        .then(success => {
           //console.log(success.key);
-        })
-        this.userInfoService.save(obj).then(t=>{
-          this.router.navigate(['/submittaxform/',t.key])
-          console.log(t.key);
-        })
-       
-      
-      }
-     
-   
+        });
+      this.userInfoService.save(obj).then(t => {
+        this.router.navigate(["/submittaxform/", t.key]);
+        console.log(t.key);
+      });
+    }
   }
-
-
 }
