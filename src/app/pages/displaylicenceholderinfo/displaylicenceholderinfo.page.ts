@@ -93,16 +93,21 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
             var currentDateObj = new Date();
             var currentyear = currentDateObj.getUTCFullYear();
 
-            let bokeyaBosor = currentyear - year;
+            let bokeyaBosor =
+              currentyear - parseInt(this.obj.sorbosesKhajnaPorisodherBosor);
+
+            if (bokeyaBosor == 0) {
+              bokeyaBosor = 1;
+            }
 
             // Fahim's Code
             let bokeyaPaona = this.obj.bokeyaDabi;
-            let tempsud = bokeyaPaona * 0.0625;
-            let step1 = bokeyaBosor + 1;
+            let tempsud = Math.round(bokeyaPaona * 0.0625);
+            //let step1 = bokeyaBosor ;
             //let step2 = bokeyaBosor * step1;
             //let step3 = step2 / 32;
 
-            let bokeyaDabirSud = tempsud * step1;
+            let bokeyaDabirSud = tempsud * bokeyaBosor;
             let motDabi =
               bokeyaDabirSud +
               parseInt(bokeyaPaona) +

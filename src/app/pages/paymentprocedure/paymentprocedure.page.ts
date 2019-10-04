@@ -16,6 +16,7 @@ export class PaymentprocedurePage implements OnInit {
   id: string;
   userInfo: UserInfos[] = [];
   key: string;
+  Motdabi;
   constructor(
     private route: ActivatedRoute,
     private submittaxformService: SubmittaxformService,
@@ -70,15 +71,25 @@ export class PaymentprocedurePage implements OnInit {
       var currentDateObj = new Date();
       var currentyear = currentDateObj.getUTCFullYear();
 
-      let bokeyaBosor = currentyear - year;
-      let step1 = bokeyaBosor + 1;
-      let step2 = bokeyaBosor * step1;
-      let step3 = step2 / 32;
-      let bokeyaDabirSud = step3 * obj.halDabi;
-      let motDabi = bokeyaDabirSud + step1 * obj.halDabi;
+      let bokeyaBosor =
+        currentyear - parseInt(obj.sorbosesKhajnaPorisodherBosor);
 
-      obj.sorbosesKhajnaPorisodherBosor = `${year}`;
-      obj.motDabi = motDabi + parseInt(obj.bokeyaDabi);
+        if (bokeyaBosor == 0) {
+          bokeyaBosor = 1;
+        }
+
+      let tempsud = Math.round(obj.bokeyaDabi * 0.0625);
+      //let step1 = bokeyaBosor ;
+      //let step2 = bokeyaBosor * step1;
+      //let step3 = step2 / 32;
+      let bokeyaDabirSud = tempsud * bokeyaBosor;
+      let motDabi =
+        bokeyaDabirSud + parseInt(obj.bokeyaDabi) + parseInt(obj.halDabi);
+
+      this.Motdabi = motDabi;
+
+      obj.sorbosesKhajnaPorisodherBosor = `${currentyear}`;
+      obj.motDabi = motDabi;
       obj.bokeyaBosor = bokeyaBosor;
       obj.bokeyaDabirSud = bokeyaDabirSud;
       obj.entryDate = new Date().getTime();
