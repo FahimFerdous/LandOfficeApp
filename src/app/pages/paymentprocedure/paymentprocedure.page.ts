@@ -28,6 +28,7 @@ export class PaymentprocedurePage implements OnInit {
 
   ngOnInit() {
     this.key = this.route.snapshot.paramMap.get("key");
+    this.Motdabi = this.route.snapshot.paramMap.get("motDabi");
     if (this.key != "") {
       this.userInfoService
         .getByKey(this.key)
@@ -86,7 +87,7 @@ export class PaymentprocedurePage implements OnInit {
       let motDabi =
         bokeyaDabirSud + parseInt(obj.bokeyaDabi) + parseInt(obj.halDabi);
 
-      this.Motdabi = motDabi;
+     // this.Motdabi = motDabi;
 
       obj.sorbosesKhajnaPorisodherBosor = `${currentyear}`;
       obj.motDabi = motDabi;

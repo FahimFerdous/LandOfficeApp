@@ -130,6 +130,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
 
   async openSpeakerShare(speaker: any) {
     let userUniCode = this.obj.userUniCode;
+    let motDabi=this.obj.motDabi;
     let key = this.obj.key;
 
     console.log("userUniCode", userUniCode);
@@ -139,19 +140,19 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
         {
           text: "ইমেইল",
           handler: () => {
-            this.router.navigate(["/paymentprocedure/", 1, userUniCode, key]);
+            this.router.navigate(["/paymentprocedure/", 1, userUniCode, key,motDabi]);
           }
         },
         {
           text: "ডাকযোগে",
           handler: () => {
-            this.router.navigate(["/paymentprocedure/", 2, userUniCode, key]);
+            this.router.navigate(["/paymentprocedure/", 2, userUniCode, key,motDabi]);
           }
         },
         {
           text: "উপজিলা বহুমি অফিস হতে",
           handler: () => {
-            this.router.navigate(["/paymentprocedure/", 3, userUniCode, key]);
+            this.router.navigate(["/paymentprocedure/", 3, userUniCode, key,motDabi]);
           }
         },
         {
