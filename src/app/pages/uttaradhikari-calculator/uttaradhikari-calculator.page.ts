@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Pipe, PipeTransform } from "@angular/core";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
-
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 @Component({
   selector: "uttaradhikari-calculator",
   templateUrl: "./uttaradhikari-calculator.page.html",
@@ -9,11 +9,15 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 })
 export class UttaradhikariCalculatorPage implements OnInit {
   url: SafeResourceUrl;
-  constructor(sanitizer: DomSanitizer) {
-    this.url = sanitizer.bypassSecurityTrustResourceUrl(
-      "http://উত্তরাধিকার.বাংলা/"
-    );
+  constructor(sanitizer: DomSanitizer,private iab:InAppBrowser) {
+    // this.url = sanitizer.bypassSecurityTrustResourceUrl(
+    //   "http://উত্তরাধিকার.বাংলা/"
+    // );
+
   }
 
+  openSystem(){
+    this.iab.create('http://উত্তরাধিকার.বাংলা/','_system')
+  }
   ngOnInit() {}
 }

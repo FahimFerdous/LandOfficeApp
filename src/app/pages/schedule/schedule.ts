@@ -5,7 +5,7 @@ import { AlertController, IonList, LoadingController, ModalController, ToastCont
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html',
@@ -30,13 +30,22 @@ export class SchedulePage implements OnInit {
     public modalCtrl: ModalController,
     public router: Router,
     public toastCtrl: ToastController,
-    public user: UserData
+    public user: UserData,
+    public inAppBrowser: InAppBrowser,
   ) { }
 
   ngOnInit() {
     this.updateSchedule();
   }
-
+  openSystemUttaradikari(){
+    this.inAppBrowser.create(`http://উত্তরাধিকার.বাংলা/`,'_system')
+  }
+  openSystemEnamjariAbedon(){
+    this.inAppBrowser.create(`https://www.land.gov.bd/application/`,'_system')
+  }
+  openSystemDigitalRecordRoom(){
+    this.inAppBrowser.create(`http://drr.land.gov.bd/`,'_system')
+  }
   updateSchedule() {
     // Close any open sliding items when the schedule updates
     if (this.scheduleList) {

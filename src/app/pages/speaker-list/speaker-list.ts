@@ -17,7 +17,8 @@ export class SpeakerListPage {
     public actionSheetCtrl: ActionSheetController,
     public confData: ConferenceData,
     public inAppBrowser: InAppBrowser,
-    public router: Router
+    public router: Router,
+    
   ) {}
 
   ionViewDidEnter() {
@@ -25,7 +26,15 @@ export class SpeakerListPage {
       this.speakers = speakers;
     });
   }
-
+  openSystemUttaradikari(){
+    this.inAppBrowser.create(`http://উত্তরাধিকার.বাংলা/`,'_system')
+  }
+  openSystemEnamjariAbedon(){
+    this.inAppBrowser.create(`https://www.land.gov.bd/application/`,'_system')
+  }
+  openSystemDigitalRecordRoom(){
+    this.inAppBrowser.create(`http://drr.land.gov.bd/`,'_system')
+  }
   goToSpeakerTwitter(speaker: any) {
     this.inAppBrowser.create(
       `https://twitter.com/${speaker.twitter}`,

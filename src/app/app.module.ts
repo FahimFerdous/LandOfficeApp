@@ -16,10 +16,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 
+
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
+    
     HttpClientModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
