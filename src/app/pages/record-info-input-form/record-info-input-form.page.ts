@@ -100,31 +100,29 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  converBanglaNumberToEnglish(input){
+  converBanglaNumberToEnglish(input) {
     var numbers = {
-      '০': 0,
-      '১': 1,
-      '২': 2,
-      '৩': 3,
-      '৪': 4,
-      '৫': 5,
-      '৬': 6,
-      '৭': 7,
-      '৮': 8,
-      '৯': 9
+      "০": 0,
+      "১": 1,
+      "২": 2,
+      "৩": 3,
+      "৪": 4,
+      "৫": 5,
+      "৬": 6,
+      "৭": 7,
+      "৮": 8,
+      "৯": 9
     };
-           
-      var output = [];
-      for (var i = 0; i < input.length; ++i) {
-        if (numbers.hasOwnProperty(input[i])) {
-          output.push(numbers[input[i]]);
-        } else {
-          output.push(input[i]);
-        }
+
+    var output = [];
+    for (var i = 0; i < input.length; ++i) {
+      if (numbers.hasOwnProperty(input[i])) {
+        output.push(numbers[input[i]]);
+      } else {
+        output.push(input[i]);
       }
-      return output.join('');
-    
-    
+    }
+    return output.join("");
   }
 
   async save(userInfo: UserInfos) {
@@ -133,52 +131,63 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
       userInfo.entryDate = new Date().getTime();
       userInfo.approved = true;
 
-      userInfo.sorbosesKhajnaPorisodherBosor=this.converBanglaNumberToEnglish(userInfo.sorbosesKhajnaPorisodherBosor);
+      userInfo.sorbosesKhajnaPorisodherBosor = this.converBanglaNumberToEnglish(
+        userInfo.sorbosesKhajnaPorisodherBosor
+      );
 
       userInfo.halDabi = parseInt(userInfo.jomirPoriman) * 25;
       var currentDateObj = new Date();
       var currentyearInEnglish = currentDateObj.getUTCFullYear();
 
-      var currentYearInBangla=currentyearInEnglish-593;
+      var currentYearInBangla = currentyearInEnglish - 593;
       userInfo.bokeyaBosor =
-      currentYearInBangla - parseInt(userInfo.sorbosesKhajnaPorisodherBosor);
+        currentYearInBangla - parseInt(userInfo.sorbosesKhajnaPorisodherBosor);
 
-     if(userInfo.bokeyaBosor>1){
-    //Fahim Write code here 
+      if (userInfo.bokeyaBosor > 1) {
+        //Fahim Write code here
 
-    //apply the second law
+        let calculateYear = userInfo.bokeyaBosor * (userInfo.bokeyaBosor + 1);
+        let DivisonResult = calculateYear / 32;
 
-    //follow else block code
-     }
-     else{
+        let bokeyaDabirSud = DivisonResult * userInfo.halDabi;
 
-      if (userInfo.bokeyaBosor == 0) {
-        userInfo.bokeyaBosor = 1;
+        let tempMotDabi = (userInfo.bokeyaBosor + 1) * userInfo.halDabi;
+
+        let MotDabi = bokeyaDabirSud + tempMotDabi;
+
+        userInfo.motDabi = MotDabi;
+
+        userInfo.bokeyaDabirSud = bokeyaDabirSud;
+
+        //apply the second law
+
+        //follow else block code
+      } else {
+        if (userInfo.bokeyaBosor == 0) {
+          userInfo.bokeyaBosor = 1;
+        }
+        let step1 = userInfo.bokeyaBosor;
+        //let step2 =userInfo.bokeyaBosor*step1;
+        //let step3=step2/32;
+
+        let tempsud = Math.round(userInfo.bokeyaDabi * 0.0625);
+
+        let bokeyaDabirSud = tempsud * step1;
+        //let motDabi=bokeyaDabirSud+step1*userInfo.halDabi;
+
+        let motDabi =
+          bokeyaDabirSud +
+          parseInt(userInfo.bokeyaDabi) +
+          parseInt(userInfo.halDabi);
+
+        //this.obj.motDabi = motDabi + parseInt(this.obj.bokeyaDabi);
+        //this.obj.motDabi = motDabi;
+
+        // userInfo.sorbosesKhajnaPorisodherBosor=`${currentyear}`;
+        userInfo.motDabi = motDabi;
+
+        userInfo.bokeyaDabirSud = bokeyaDabirSud;
       }
-      let step1 = userInfo.bokeyaBosor;
-      //let step2 =userInfo.bokeyaBosor*step1;
-      //let step3=step2/32;
-
-      let tempsud = Math.round(userInfo.bokeyaDabi * 0.0625);
-
-      let bokeyaDabirSud = tempsud * step1;
-      //let motDabi=bokeyaDabirSud+step1*userInfo.halDabi;
-
-      let motDabi =
-        bokeyaDabirSud +
-        parseInt(userInfo.bokeyaDabi) +
-        parseInt(userInfo.halDabi);
-
-      //this.obj.motDabi = motDabi + parseInt(this.obj.bokeyaDabi);
-      //this.obj.motDabi = motDabi;
-
-      // userInfo.sorbosesKhajnaPorisodherBosor=`${currentyear}`;
-      userInfo.motDabi = motDabi;
-
-      userInfo.bokeyaDabirSud = bokeyaDabirSud;
-
-     }
-
 
       //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);
       await this.userInfoService.save(userInfo).then(t => {
