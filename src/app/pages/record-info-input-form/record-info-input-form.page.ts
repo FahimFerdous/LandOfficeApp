@@ -100,17 +100,57 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  converBanglaNumberToEnglish(input){
+    var numbers = {
+      '০': 0,
+      '১': 1,
+      '২': 2,
+      '৩': 3,
+      '৪': 4,
+      '৫': 5,
+      '৬': 6,
+      '৭': 7,
+      '৮': 8,
+      '৯': 9
+    };
+           
+      var output = [];
+      for (var i = 0; i < input.length; ++i) {
+        if (numbers.hasOwnProperty(input[i])) {
+          output.push(numbers[input[i]]);
+        } else {
+          output.push(input[i]);
+        }
+      }
+      return output.join('');
+    
+    
+  }
+
   async save(userInfo: UserInfos) {
     if (!this.userCount.find(l => l.licenceNo == userInfo.licenceNo)) {
       userInfo.userUniCode = "vO00" + this.userCount.length;
       userInfo.entryDate = new Date().getTime();
       userInfo.approved = true;
 
+      userInfo.sorbosesKhajnaPorisodherBosor=this.converBanglaNumberToEnglish(userInfo.sorbosesKhajnaPorisodherBosor);
+
       userInfo.halDabi = parseInt(userInfo.jomirPoriman) * 25;
       var currentDateObj = new Date();
-      var currentyear = currentDateObj.getUTCFullYear();
+      var currentyearInEnglish = currentDateObj.getUTCFullYear();
+
+      var currentYearInBangla=currentyearInEnglish-593;
       userInfo.bokeyaBosor =
-        currentyear - parseInt(userInfo.sorbosesKhajnaPorisodherBosor);
+      currentYearInBangla - parseInt(userInfo.sorbosesKhajnaPorisodherBosor);
+
+     if(userInfo.bokeyaBosor>1){
+    //Fahim Write code here 
+
+    //apply the second law
+
+    //follow else block code
+     }
+     else{
 
       if (userInfo.bokeyaBosor == 0) {
         userInfo.bokeyaBosor = 1;
@@ -136,6 +176,9 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
       userInfo.motDabi = motDabi;
 
       userInfo.bokeyaDabirSud = bokeyaDabirSud;
+
+     }
+
 
       //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);
       await this.userInfoService.save(userInfo).then(t => {
