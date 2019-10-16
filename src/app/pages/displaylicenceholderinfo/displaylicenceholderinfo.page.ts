@@ -7,6 +7,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { UserInfos } from "../../model/user-inofo";
 import { ActionSheetController } from "@ionic/angular";
+import { SudCalculation } from '../../model/sudCalculation';
 
 @Component({
   selector: "displaylicenceholderinfo",
@@ -23,6 +24,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
   searchResultFound: number;
 
   obj = new UserInfos();
+  sudCalculation=new SudCalculation();
   constructor(
     private route: ActivatedRoute,
     private userInfoService: UserInfosService,
@@ -70,11 +72,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
             : this.userInfos;
           this.searchResultUserInfos = filteredUserInfo;
           this.searchResultFound = this.searchResultUserInfos.length;
-          console.log(
-            "beforSortsearchingUserInfos",
-            this.searchResultUserInfos
-          );
-
+ 
           if (this.searchResultUserInfos.length != 0) {
             this.searchResultUserInfos.sort(
               (a, b) =>
@@ -83,41 +81,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
             );
 
             this.obj = this.searchResultUserInfos.shift();
-            console.log("ob", this.obj);
-
-            var dateObj = new Date(this.obj.entryDate);
-            var month = dateObj.getUTCMonth() + 1; //months from 1-12
-            var day = dateObj.getUTCDate();
-            var year = dateObj.getUTCFullYear();
-
-            var currentDateObj = new Date();
-            var currentyear = currentDateObj.getUTCFullYear();
-
-            let bokeyaBosor =
-              currentyear - parseInt(this.obj.sorbosesKhajnaPorisodherBosor);
-
-            if (bokeyaBosor == 0) {
-              bokeyaBosor = 1;
-            }
-
-            // Fahim's Code
-            let bokeyaPaona = this.obj.bokeyaDabi;
-            let tempsud = Math.round(bokeyaPaona * 0.0625);
-            //let step1 = bokeyaBosor ;
-            //let step2 = bokeyaBosor * step1;
-            //let step3 = step2 / 32;
-
-            let bokeyaDabirSud = tempsud * bokeyaBosor;
-            let motDabi =
-              bokeyaDabirSud +
-              parseInt(bokeyaPaona) +
-              parseInt(this.obj.halDabi);
-
-            //this.obj.motDabi = motDabi + parseInt(this.obj.bokeyaDabi);
-            this.obj.motDabi = motDabi;
-            this.obj.bokeyaBosor = bokeyaBosor;
-            this.obj.bokeyaDabirSud = bokeyaDabirSud;
-            this.obj.sorbosesKhajnaPorisodherBosor = `${year}`;
+            this.obj=this.sudCalculation.SudCalculationActionHandaler(this.obj);
           }
         }
       });

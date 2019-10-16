@@ -10,6 +10,7 @@ import { HatService } from "../../services/hat.service";
 import { LicenceService } from "../../services/licence.service";
 import { ToastController } from "@ionic/angular";
 import { AuthService } from "../../services/auth.service";
+import { SudCalculation } from '../../model/sudCalculation';
 
 @Component({
   selector: "record-info-input-form",
@@ -23,6 +24,7 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
   hats: Hat[];
   licences: Licence[];
   userInfo = new UserInfos();
+  sudCalculation=new SudCalculation();
 
   userCount: UserInfos[];
   constructor(
@@ -130,66 +132,15 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
       userInfo.userUniCode = "vO00" + this.userCount.length;
       userInfo.entryDate = new Date().getTime();
       userInfo.approved = true;
-
+      
+      userInfo.jomirPoriman=this.converBanglaNumberToEnglish(userInfo.jomirPoriman);
+      userInfo.bokeyaDabi=this.converBanglaNumberToEnglish(userInfo.bokeyaDabi);
       userInfo.sorbosesKhajnaPorisodherBosor = this.converBanglaNumberToEnglish(
         userInfo.sorbosesKhajnaPorisodherBosor
       );
 
-      userInfo.halDabi = parseInt(userInfo.jomirPoriman) * 25;
-      var currentDateObj = new Date();
-      var currentyearInEnglish = currentDateObj.getUTCFullYear();
 
-      var currentYearInBangla = currentyearInEnglish - 593;
-      userInfo.bokeyaBosor =
-        currentYearInBangla - parseInt(userInfo.sorbosesKhajnaPorisodherBosor);
-
-      if (userInfo.bokeyaBosor > 1) {
-        //Fahim Write code here
-
-        let calculateYear = userInfo.bokeyaBosor * (userInfo.bokeyaBosor + 1);
-        let DivisonResult = calculateYear / 32;
-
-        let bokeyaDabirSud = DivisonResult * userInfo.halDabi;
-
-        let tempMotDabi = (userInfo.bokeyaBosor + 1) * userInfo.halDabi;
-
-        let MotDabi = bokeyaDabirSud + tempMotDabi;
-
-        userInfo.motDabi = MotDabi;
-
-        userInfo.bokeyaDabirSud = bokeyaDabirSud;
-
-        //apply the second law
-
-        //follow else block code
-      } else {
-        if (userInfo.bokeyaBosor == 0) {
-          userInfo.bokeyaBosor = 1;
-        }
-        let step1 = userInfo.bokeyaBosor;
-        //let step2 =userInfo.bokeyaBosor*step1;
-        //let step3=step2/32;
-
-        let tempsud = Math.round(userInfo.bokeyaDabi * 0.0625);
-
-        let bokeyaDabirSud = tempsud * step1;
-        //let motDabi=bokeyaDabirSud+step1*userInfo.halDabi;
-
-        let motDabi =
-          bokeyaDabirSud +
-          parseInt(userInfo.bokeyaDabi) +
-          parseInt(userInfo.halDabi);
-
-        //this.obj.motDabi = motDabi + parseInt(this.obj.bokeyaDabi);
-        //this.obj.motDabi = motDabi;
-
-        // userInfo.sorbosesKhajnaPorisodherBosor=`${currentyear}`;
-        userInfo.motDabi = motDabi;
-
-        userInfo.bokeyaDabirSud = bokeyaDabirSud;
-      }
-
-      //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);
+      userInfo= this.sudCalculation.SudCalculationActionHandaler(userInfo);  
       await this.userInfoService.save(userInfo).then(t => {
         const toast = this.toastController
           .create({

@@ -6,6 +6,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { UserInfosService } from "../../services/user-infos.service";
 import { UserInfos } from "../../model/user-inofo";
 import { Key } from "protractor";
+import { SudCalculation } from '../../model/sudCalculation';
 
 @Component({
   selector: "paymentprocedure",
@@ -17,6 +18,8 @@ export class PaymentprocedurePage implements OnInit {
   userInfo: UserInfos[] = [];
   key: string;
   Motdabi;
+
+  sudCalculation=new SudCalculation();
   constructor(
     private route: ActivatedRoute,
     private submittaxformService: SubmittaxformService,
@@ -64,38 +67,17 @@ export class PaymentprocedurePage implements OnInit {
     if (this.key != "") {
       let obj = this.userInfo.find(f => f.key == this.key);
 
-      var dateObj = new Date(obj.entryDate);
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate();
-      var year = dateObj.getUTCFullYear();
+      obj=this.sudCalculation.SudCalculationActionHandaler(obj);
 
-      var currentDateObj = new Date();
-      var currentyear = currentDateObj.getUTCFullYear();
-
-      let bokeyaBosor =
-        currentyear - parseInt(obj.sorbosesKhajnaPorisodherBosor);
-
-        if (bokeyaBosor == 0) {
-          bokeyaBosor = 1;
-        }
-
-      let tempsud = Math.round(obj.bokeyaDabi * 0.0625);
-      //let step1 = bokeyaBosor ;
-      //let step2 = bokeyaBosor * step1;
-      //let step3 = step2 / 32;
-      let bokeyaDabirSud = tempsud * bokeyaBosor;
-      let motDabi =
-        bokeyaDabirSud + parseInt(obj.bokeyaDabi) + parseInt(obj.halDabi);
-
-     // this.Motdabi = motDabi;
-
-      obj.sorbosesKhajnaPorisodherBosor = `${currentyear}`;
-      obj.motDabi = motDabi;
-      obj.bokeyaBosor = bokeyaBosor;
-      obj.bokeyaDabirSud = bokeyaDabirSud;
       obj.entryDate = new Date().getTime();
       obj.approved = false;
       obj.prodottoTakarPoriman = 0;
+
+      var currentDateObj = new Date();
+      var currentyearInEnglish = currentDateObj.getUTCFullYear();
+    
+     let currentYearInBangla = currentyearInEnglish - 593;
+     obj.sorbosesKhajnaPorisodherBosor=currentYearInBangla.toString();
       console.log("obj", obj);
 
       gettingReciType.userUniCode = userUniCode;
