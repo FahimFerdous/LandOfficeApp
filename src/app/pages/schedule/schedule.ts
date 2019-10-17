@@ -38,13 +38,13 @@ export class SchedulePage implements OnInit {
     this.updateSchedule();
   }
   openSystemUttaradikari(){
-    this.inAppBrowser.create(`http://উত্তরাধিকার.বাংলা/`,'_blank"')
+    this.inAppBrowser.create(`http://উত্তরাধিকার.বাংলা/`,'_system')
   }
   openSystemEnamjariAbedon(){
-    this.inAppBrowser.create(`https://www.land.gov.bd/application/`,'_blank"')
+    this.inAppBrowser.create(`https://www.land.gov.bd/application/`,'_system')
   }
   openSystemDigitalRecordRoom(){
-    this.inAppBrowser.create(`http://drr.land.gov.bd/`,'_blank"')
+    this.inAppBrowser.create(`http://drr.land.gov.bd/`,'_system')
   }
   updateSchedule() {
     // Close any open sliding items when the schedule updates

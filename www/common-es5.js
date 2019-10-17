@@ -396,6 +396,57 @@ var Licence = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/model/sudCalculation.ts":
+/*!*****************************************!*\
+  !*** ./src/app/model/sudCalculation.ts ***!
+  \*****************************************/
+/*! exports provided: SudCalculation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SudCalculation", function() { return SudCalculation; });
+var SudCalculation = /** @class */ (function () {
+    function SudCalculation() {
+    }
+    SudCalculation.prototype.SudCalculationActionHandaler = function (userInfos) {
+        userInfos.halDabi = parseInt(userInfos.jomirPoriman) * 25;
+        var currentDateObj = new Date();
+        var currentyearInEnglish = currentDateObj.getUTCFullYear();
+        var currentYearInBangla = currentyearInEnglish - 593;
+        userInfos.bokeyaBosor =
+            currentYearInBangla - parseInt(userInfos.sorbosesKhajnaPorisodherBosor);
+        if (userInfos.bokeyaBosor > 1) {
+            var calculateYear = userInfos.bokeyaBosor * (userInfos.bokeyaBosor + 1);
+            var DivisonResult = calculateYear / 32;
+            var bokeyaDabirSud = DivisonResult * userInfos.halDabi;
+            var tempMotDabi = (userInfos.bokeyaBosor + 1) * userInfos.halDabi;
+            var MotDabi = bokeyaDabirSud + tempMotDabi;
+            userInfos.motDabi = MotDabi;
+            userInfos.bokeyaDabirSud = bokeyaDabirSud;
+        }
+        else {
+            if (userInfos.bokeyaBosor == 0) {
+                userInfos.bokeyaBosor = 1;
+            }
+            var step1 = userInfos.bokeyaBosor;
+            var tempsud = Math.round(userInfos.bokeyaDabi * 0.0625);
+            var bokeyaDabirSud = tempsud * step1;
+            var motDabi = bokeyaDabirSud +
+                parseInt(userInfos.bokeyaDabi) +
+                parseInt(userInfos.halDabi);
+            userInfos.motDabi = motDabi;
+            userInfos.bokeyaDabirSud = bokeyaDabirSud;
+        }
+        return userInfos;
+    };
+    return SudCalculation;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/model/user-inofo.ts":
 /*!*************************************!*\
   !*** ./src/app/model/user-inofo.ts ***!

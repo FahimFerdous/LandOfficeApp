@@ -90,6 +90,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
 /* harmony import */ var _services_user_infos_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/user-infos.service */ "./src/app/services/user-infos.service.ts");
+/* harmony import */ var _model_sudCalculation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../model/sudCalculation */ "./src/app/model/sudCalculation.ts");
+
 
 
 
@@ -106,6 +108,7 @@ var PaymentprocedurePage = /** @class */ (function () {
         this.afAuth = afAuth;
         this.router = router;
         this.userInfo = [];
+        this.sudCalculation = new _model_sudCalculation__WEBPACK_IMPORTED_MODULE_7__["SudCalculation"]();
     }
     PaymentprocedurePage.prototype.ngOnInit = function () {
         var _this = this;
@@ -143,30 +146,14 @@ var PaymentprocedurePage = /** @class */ (function () {
         }
         if (this.key != "") {
             var obj = this.userInfo.find(function (f) { return f.key == _this.key; });
-            var dateObj = new Date(obj.entryDate);
-            var month = dateObj.getUTCMonth() + 1; //months from 1-12
-            var day = dateObj.getUTCDate();
-            var year = dateObj.getUTCFullYear();
-            var currentDateObj = new Date();
-            var currentyear = currentDateObj.getUTCFullYear();
-            var bokeyaBosor = currentyear - parseInt(obj.sorbosesKhajnaPorisodherBosor);
-            if (bokeyaBosor == 0) {
-                bokeyaBosor = 1;
-            }
-            var tempsud = Math.round(obj.bokeyaDabi * 0.0625);
-            //let step1 = bokeyaBosor ;
-            //let step2 = bokeyaBosor * step1;
-            //let step3 = step2 / 32;
-            var bokeyaDabirSud = tempsud * bokeyaBosor;
-            var motDabi = bokeyaDabirSud + parseInt(obj.bokeyaDabi) + parseInt(obj.halDabi);
-            // this.Motdabi = motDabi;
-            obj.sorbosesKhajnaPorisodherBosor = "" + currentyear;
-            obj.motDabi = motDabi;
-            obj.bokeyaBosor = bokeyaBosor;
-            obj.bokeyaDabirSud = bokeyaDabirSud;
+            obj = this.sudCalculation.SudCalculationActionHandaler(obj);
             obj.entryDate = new Date().getTime();
             obj.approved = false;
             obj.prodottoTakarPoriman = 0;
+            var currentDateObj = new Date();
+            var currentyearInEnglish = currentDateObj.getUTCFullYear();
+            var currentYearInBangla = currentyearInEnglish - 593;
+            obj.sorbosesKhajnaPorisodherBosor = currentYearInBangla.toString();
             console.log("obj", obj);
             gettingReciType.userUniCode = userUniCode;
             gettingReciType.entryDate = new Date().getTime();

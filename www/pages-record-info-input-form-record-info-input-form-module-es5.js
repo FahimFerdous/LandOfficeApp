@@ -92,6 +92,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_licence_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/licence.service */ "./src/app/services/licence.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _model_sudCalculation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../model/sudCalculation */ "./src/app/model/sudCalculation.ts");
+
 
 
 
@@ -110,6 +112,7 @@ var RecordInfoInputFormPage = /** @class */ (function () {
         this.userInfoService = userInfoService;
         this.auth = auth;
         this.userInfo = new _model_user_inofo__WEBPACK_IMPORTED_MODULE_2__["UserInfos"]();
+        this.sudCalculation = new _model_sudCalculation__WEBPACK_IMPORTED_MODULE_9__["SudCalculation"]();
     }
     RecordInfoInputFormPage.prototype.ngOnInit = function () {
         var _this = this;
@@ -168,9 +171,33 @@ var RecordInfoInputFormPage = /** @class */ (function () {
     RecordInfoInputFormPage.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
+    RecordInfoInputFormPage.prototype.converBanglaNumberToEnglish = function (input) {
+        var numbers = {
+            "০": 0,
+            "১": 1,
+            "২": 2,
+            "৩": 3,
+            "৪": 4,
+            "৫": 5,
+            "৬": 6,
+            "৭": 7,
+            "৮": 8,
+            "৯": 9
+        };
+        var output = [];
+        for (var i = 0; i < input.length; ++i) {
+            if (numbers.hasOwnProperty(input[i])) {
+                output.push(numbers[input[i]]);
+            }
+            else {
+                output.push(input[i]);
+            }
+        }
+        return output.join("");
+    };
     RecordInfoInputFormPage.prototype.save = function (userInfo) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var currentDateObj, currentyear, step1, tempsud, bokeyaDabirSud, motDabi, toast;
+            var toast;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -179,26 +206,10 @@ var RecordInfoInputFormPage = /** @class */ (function () {
                         userInfo.userUniCode = "vO00" + this.userCount.length;
                         userInfo.entryDate = new Date().getTime();
                         userInfo.approved = true;
-                        userInfo.halDabi = parseInt(userInfo.jomirPoriman) * 25;
-                        currentDateObj = new Date();
-                        currentyear = currentDateObj.getUTCFullYear();
-                        userInfo.bokeyaBosor =
-                            currentyear - parseInt(userInfo.sorbosesKhajnaPorisodherBosor);
-                        if (userInfo.bokeyaBosor == 0) {
-                            userInfo.bokeyaBosor = 1;
-                        }
-                        step1 = userInfo.bokeyaBosor;
-                        tempsud = Math.round(userInfo.bokeyaDabi * 0.0625);
-                        bokeyaDabirSud = tempsud * step1;
-                        motDabi = bokeyaDabirSud +
-                            parseInt(userInfo.bokeyaDabi) +
-                            parseInt(userInfo.halDabi);
-                        //this.obj.motDabi = motDabi + parseInt(this.obj.bokeyaDabi);
-                        //this.obj.motDabi = motDabi;
-                        // userInfo.sorbosesKhajnaPorisodherBosor=`${currentyear}`;
-                        userInfo.motDabi = motDabi;
-                        userInfo.bokeyaDabirSud = bokeyaDabirSud;
-                        //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);
+                        userInfo.jomirPoriman = this.converBanglaNumberToEnglish(userInfo.jomirPoriman);
+                        userInfo.bokeyaDabi = this.converBanglaNumberToEnglish(userInfo.bokeyaDabi);
+                        userInfo.sorbosesKhajnaPorisodherBosor = this.converBanglaNumberToEnglish(userInfo.sorbosesKhajnaPorisodherBosor);
+                        userInfo = this.sudCalculation.SudCalculationActionHandaler(userInfo);
                         return [4 /*yield*/, this.userInfoService.save(userInfo).then(function (t) {
                                 var toast = _this.toastController
                                     .create({
@@ -210,7 +221,6 @@ var RecordInfoInputFormPage = /** @class */ (function () {
                                 });
                             })];
                     case 1:
-                        //this.auth.appUid.subscribe(u=>userInfo.entryBy=u.uid);
                         _a.sent();
                         this.userInfo = new _model_user_inofo__WEBPACK_IMPORTED_MODULE_2__["UserInfos"]();
                         return [3 /*break*/, 3];

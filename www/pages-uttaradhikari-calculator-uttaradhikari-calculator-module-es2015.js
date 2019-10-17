@@ -90,13 +90,13 @@ __webpack_require__.r(__webpack_exports__);
 
 let UttaradhikariCalculatorPage = class UttaradhikariCalculatorPage {
     constructor(sanitizer, iab) {
+        this.iab = iab;
         // this.url = sanitizer.bypassSecurityTrustResourceUrl(
         //   "http://উত্তরাধিকার.বাংলা/"
         // );
-        this.iab = iab;
     }
     openSystem() {
-        this.iab.create('http://উত্তরাধিকার.বাংলা/', '_system');
+        this.iab.create("http://উত্তরাধিকার.বাংলা/", "_blank");
     }
     ngOnInit() { }
 };

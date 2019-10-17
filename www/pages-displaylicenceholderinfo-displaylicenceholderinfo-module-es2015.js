@@ -86,6 +86,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _model_user_inofo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../model/user-inofo */ "./src/app/model/user-inofo.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _model_sudCalculation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../model/sudCalculation */ "./src/app/model/sudCalculation.ts");
+
 
 
 
@@ -99,6 +101,7 @@ let DisplaylicenceholderinfoPage = class DisplaylicenceholderinfoPage {
         this.actionSheetCtrl = actionSheetCtrl;
         this.router = router;
         this.obj = new _model_user_inofo__WEBPACK_IMPORTED_MODULE_4__["UserInfos"]();
+        this.sudCalculation = new _model_sudCalculation__WEBPACK_IMPORTED_MODULE_6__["SudCalculation"]();
     }
     ngOnInit() {
         this.pourosovaId = this.route.snapshot.paramMap.get("pourosovaId");
@@ -132,37 +135,11 @@ let DisplaylicenceholderinfoPage = class DisplaylicenceholderinfoPage {
                     : this.userInfos;
                 this.searchResultUserInfos = filteredUserInfo;
                 this.searchResultFound = this.searchResultUserInfos.length;
-                console.log("beforSortsearchingUserInfos", this.searchResultUserInfos);
                 if (this.searchResultUserInfos.length != 0) {
                     this.searchResultUserInfos.sort((a, b) => new Date(b.entryDate).getTime() -
                         new Date(a.entryDate).getTime());
                     this.obj = this.searchResultUserInfos.shift();
-                    console.log("ob", this.obj);
-                    var dateObj = new Date(this.obj.entryDate);
-                    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-                    var day = dateObj.getUTCDate();
-                    var year = dateObj.getUTCFullYear();
-                    var currentDateObj = new Date();
-                    var currentyear = currentDateObj.getUTCFullYear();
-                    let bokeyaBosor = currentyear - parseInt(this.obj.sorbosesKhajnaPorisodherBosor);
-                    if (bokeyaBosor == 0) {
-                        bokeyaBosor = 1;
-                    }
-                    // Fahim's Code
-                    let bokeyaPaona = this.obj.bokeyaDabi;
-                    let tempsud = Math.round(bokeyaPaona * 0.0625);
-                    //let step1 = bokeyaBosor ;
-                    //let step2 = bokeyaBosor * step1;
-                    //let step3 = step2 / 32;
-                    let bokeyaDabirSud = tempsud * bokeyaBosor;
-                    let motDabi = bokeyaDabirSud +
-                        parseInt(bokeyaPaona) +
-                        parseInt(this.obj.halDabi);
-                    //this.obj.motDabi = motDabi + parseInt(this.obj.bokeyaDabi);
-                    this.obj.motDabi = motDabi;
-                    this.obj.bokeyaBosor = bokeyaBosor;
-                    this.obj.bokeyaDabirSud = bokeyaDabirSud;
-                    this.obj.sorbosesKhajnaPorisodherBosor = `${year}`;
+                    this.obj = this.sudCalculation.SudCalculationActionHandaler(this.obj);
                 }
             }
         });

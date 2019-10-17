@@ -89,6 +89,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _model_user_inofo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../model/user-inofo */ "./src/app/model/user-inofo.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _model_sudCalculation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../model/sudCalculation */ "./src/app/model/sudCalculation.ts");
+
 
 
 
@@ -102,6 +104,7 @@ var DisplaylicenceholderinfoPage = /** @class */ (function () {
         this.actionSheetCtrl = actionSheetCtrl;
         this.router = router;
         this.obj = new _model_user_inofo__WEBPACK_IMPORTED_MODULE_4__["UserInfos"]();
+        this.sudCalculation = new _model_sudCalculation__WEBPACK_IMPORTED_MODULE_6__["SudCalculation"]();
     }
     DisplaylicenceholderinfoPage.prototype.ngOnInit = function () {
         var _this = this;
@@ -138,39 +141,13 @@ var DisplaylicenceholderinfoPage = /** @class */ (function () {
                     : _this.userInfos;
                 _this.searchResultUserInfos = filteredUserInfo;
                 _this.searchResultFound = _this.searchResultUserInfos.length;
-                console.log("beforSortsearchingUserInfos", _this.searchResultUserInfos);
                 if (_this.searchResultUserInfos.length != 0) {
                     _this.searchResultUserInfos.sort(function (a, b) {
                         return new Date(b.entryDate).getTime() -
                             new Date(a.entryDate).getTime();
                     });
                     _this.obj = _this.searchResultUserInfos.shift();
-                    console.log("ob", _this.obj);
-                    var dateObj = new Date(_this.obj.entryDate);
-                    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-                    var day = dateObj.getUTCDate();
-                    var year = dateObj.getUTCFullYear();
-                    var currentDateObj = new Date();
-                    var currentyear = currentDateObj.getUTCFullYear();
-                    var bokeyaBosor = currentyear - parseInt(_this.obj.sorbosesKhajnaPorisodherBosor);
-                    if (bokeyaBosor == 0) {
-                        bokeyaBosor = 1;
-                    }
-                    // Fahim's Code
-                    var bokeyaPaona = _this.obj.bokeyaDabi;
-                    var tempsud = Math.round(bokeyaPaona * 0.0625);
-                    //let step1 = bokeyaBosor ;
-                    //let step2 = bokeyaBosor * step1;
-                    //let step3 = step2 / 32;
-                    var bokeyaDabirSud = tempsud * bokeyaBosor;
-                    var motDabi = bokeyaDabirSud +
-                        parseInt(bokeyaPaona) +
-                        parseInt(_this.obj.halDabi);
-                    //this.obj.motDabi = motDabi + parseInt(this.obj.bokeyaDabi);
-                    _this.obj.motDabi = motDabi;
-                    _this.obj.bokeyaBosor = bokeyaBosor;
-                    _this.obj.bokeyaDabirSud = bokeyaDabirSud;
-                    _this.obj.sorbosesKhajnaPorisodherBosor = "" + year;
+                    _this.obj = _this.sudCalculation.SudCalculationActionHandaler(_this.obj);
                 }
             }
         });

@@ -93,13 +93,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var UttaradhikariCalculatorPage = /** @class */ (function () {
     function UttaradhikariCalculatorPage(sanitizer, iab) {
+        this.iab = iab;
         // this.url = sanitizer.bypassSecurityTrustResourceUrl(
         //   "http://উত্তরাধিকার.বাংলা/"
         // );
-        this.iab = iab;
     }
     UttaradhikariCalculatorPage.prototype.openSystem = function () {
-        this.iab.create('http://উত্তরাধিকার.বাংলা/', '_system');
+        this.iab.create("http://উত্তরাধিকার.বাংলা/", "_blank");
     };
     UttaradhikariCalculatorPage.prototype.ngOnInit = function () { };
     UttaradhikariCalculatorPage.ctorParameters = function () { return [
