@@ -63,11 +63,9 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
                 p =>
                   p.pourosovaId
                     .toLowerCase()
-                    .includes(this.pourosovaId.toLowerCase()) &&
-                  p.hatId.toLowerCase().includes(this.hatId.toLowerCase()) &&
-                  p.licenceNo
-                    .toLowerCase()
-                    .includes(this.licenceId.toLowerCase())
+                    .includes(this.pourosovaId.toLowerCase() )&&
+                  p.hatId.toLowerCase().includes(this.hatId.toLowerCase() )&&
+                  p.licenceNo==this.licenceId
               )
             : this.userInfos;
           this.searchResultUserInfos = filteredUserInfo;

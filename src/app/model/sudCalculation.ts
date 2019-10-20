@@ -10,7 +10,7 @@ export class SudCalculation {
     
             var currentYearInBangla = currentyearInEnglish - 593;
         userInfos.bokeyaBosor =
-            currentYearInBangla - parseInt(userInfos.sorbosesKhajnaPorisodherBosor);
+            currentYearInBangla - parseInt(userInfos.sorbosesKhajnaPorisodherBosor)-1;
 
 
             if (userInfos.bokeyaBosor > 1) {
@@ -29,7 +29,7 @@ export class SudCalculation {
                 userInfos.bokeyaDabirSud = bokeyaDabirSud;
 
               } else {
-                if (userInfos.bokeyaBosor == 0) {
+                if (userInfos.bokeyaBosor<=0) {
                     userInfos.bokeyaBosor = 1;
                 }
                 let step1 = userInfos.bokeyaBosor;
@@ -45,6 +45,7 @@ export class SudCalculation {
                   userInfos.motDabi = motDabi;
         
                   userInfos.bokeyaDabirSud = bokeyaDabirSud;
+                  userInfos.bokeyaBosor = 0;
               }
         
             
