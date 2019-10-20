@@ -3,43 +3,47 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
     </ion-buttons>
-    <ion-title>Enter Hat Name</ion-title>
+    <ion-title>হাঁট নাম্বার দিন</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding speaker-detail">
   <div class="ion-text-center">
-
     <form novalidate>
       <ion-list>
         <ion-item>
-          <ion-label>Select Pourosova</ion-label>
-          <ion-select #pourosovaId="ngModel" [(ngModel)]="hat.pourosovaId" name="pourosovaId" value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let c of pourosova"  [value]="c.key">
-               {{ c.pourosovaName }}
-              </ion-select-option>
-               
+          <ion-label>সিলেক্ট ইউনিয়ন</ion-label>
+          <ion-select
+            #pourosovaId="ngModel"
+            [(ngModel)]="hat.pourosovaId"
+            name="pourosovaId"
+            value="brown"
+            okText="Okay"
+            cancelText="Dismiss"
+          >
+            <ion-select-option *ngFor="let c of pourosova" [value]="c.key">
+              {{ c.pourosovaName }}
+            </ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-input #hatName="ngModel" [(ngModel)]="hat.hatName" name="hatName" clearInput placeholder="Hat Name"></ion-input>
-
-
+          <ion-input
+            #hatName="ngModel"
+            [(ngModel)]="hat.hatName"
+            name="hatName"
+            clearInput
+            placeholder="Hat Name"
+          ></ion-input>
         </ion-item>
-
-
       </ion-list>
 
       <ion-row>
         <ion-col>
-          <ion-button (click)="save(hat)" type="submit" expand="block">Submit</ion-button>
+          <ion-button (click)="save(hat)" type="submit" expand="block"
+            >Submit</ion-button
+          >
         </ion-col>
       </ion-row>
     </form>
-
-
-
   </div>
-
-
 </ion-content>

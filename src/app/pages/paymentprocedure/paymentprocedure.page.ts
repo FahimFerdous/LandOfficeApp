@@ -6,7 +6,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { UserInfosService } from "../../services/user-infos.service";
 import { UserInfos } from "../../model/user-inofo";
 import { Key } from "protractor";
-import { SudCalculation } from '../../model/sudCalculation';
+import { SudCalculation } from "../../model/sudCalculation";
 
 @Component({
   selector: "paymentprocedure",
@@ -19,7 +19,7 @@ export class PaymentprocedurePage implements OnInit {
   key: string;
   Motdabi;
 
-  sudCalculation=new SudCalculation();
+  sudCalculation = new SudCalculation();
   constructor(
     private route: ActivatedRoute,
     private submittaxformService: SubmittaxformService,
@@ -61,13 +61,13 @@ export class PaymentprocedurePage implements OnInit {
       gettingReciType.paymentTypeName = "ডাকযোগে";
     }
     if (this.id == "3") {
-      gettingReciType.paymentTypeName = "উপজিলা বহুমি অফিস হতে";
+      gettingReciType.paymentTypeName = "উপজেলা ভূমি অফিস হতে";
     }
 
     if (this.key != "") {
       let obj = this.userInfo.find(f => f.key == this.key);
 
-      obj=this.sudCalculation.SudCalculationActionHandaler(obj);
+      obj = this.sudCalculation.SudCalculationActionHandaler(obj);
 
       obj.entryDate = new Date().getTime();
       obj.approved = false;
@@ -75,9 +75,9 @@ export class PaymentprocedurePage implements OnInit {
 
       var currentDateObj = new Date();
       var currentyearInEnglish = currentDateObj.getUTCFullYear();
-    
-     let currentYearInBangla = currentyearInEnglish - 593;
-     obj.sorbosesKhajnaPorisodherBosor=currentYearInBangla.toString();
+
+      let currentYearInBangla = currentyearInEnglish - 593;
+      obj.sorbosesKhajnaPorisodherBosor = currentYearInBangla.toString();
       console.log("obj", obj);
 
       gettingReciType.userUniCode = userUniCode;

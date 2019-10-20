@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
     </ion-buttons>
-    <ion-title>Enter Licence No</ion-title>
+    <ion-title>লাইসেন্স নাম্বার দিন</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
     <form novalidate>
       <ion-list>
         <ion-item>
-          <ion-label>Select Pourosova</ion-label>
+          <ion-label>সিলেক্ট ইউনিয়ন</ion-label>
           <ion-select
             #pourosovaId="ngModel"
             [(ngModel)]="licence.pourosovaId"
@@ -28,7 +28,7 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>Select HAT</ion-label>
+          <ion-label>সিলেক্ট হাঁট</ion-label>
           <ion-select
             #hatId="ngModel"
             [(ngModel)]="licence.hatId"

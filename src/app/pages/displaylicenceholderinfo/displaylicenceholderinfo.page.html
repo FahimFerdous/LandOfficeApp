@@ -12,68 +12,129 @@
       <ion-row class="ion-align-items-stretch">
         <ion-col size="12" size-md="6">
           <ion-card class="speaker-card">
-
-            <ion-card-content *ngIf="searchResultFound==0">
+            <ion-card-content *ngIf="searchResultFound == 0">
               <ion-item>
-                <h3> কোনো রেকর্ড পাওয়া যায়নি !</h3>
+                <h3>কোনো রেকর্ড পাওয়া যায়নি !</h3>
               </ion-item>
             </ion-card-content>
-            <ion-card-content *ngIf="searchResultFound!=0">
-              <ion-list >
+            <ion-card-content *ngIf="searchResultFound != 0">
+              <ion-list>
                 <ion-item>
-                  <h3>মালিকের নাম : <span style="font-size:15px"><b>{{obj.malikerName}}</b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>ইউনিয়ন : <span style="font-size:15px"><b>{{obj.union}} </b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>মৌজা : <span style="font-size:15px"><b>{{obj.mouja}} </b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>করের ধরন : <span style="font-size:15px"><b>{{obj.korerDhoron}}</b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>হোল্ডিং নং : <span style="font-size:15px"><b>{{obj.holdingNo}}  </b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>জমির পরিমাণ : <span style="font-size:15px"><b>{{obj.jomirPoriman}} বর্গ মিটার </b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>সর্বশেষ খাজনা পরিশোধের বছর : <span
-                      style="font-size:15px"><b>{{obj.sorbosesKhajnaPorisodherBosor}} </b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>বকেয়া বছর : <span style="font-size:15px"><b>{{obj.bokeyaBosor}} </b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>বকেয়া দাবি : <span style="font-size:15px"><b>{{obj.bokeyaDabi}} টাকা </b></span></h3>
-                </ion-item>
-                <ion-item>
-                  <h3>বকেয়া দাবির সুদ : <span style="font-size:15px"><b>{{obj.bokeyaDabirSud}} টাকা </b></span>
+                  <h3>
+                    মালিকের নাম :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.malikerName }}</b></span
+                    >
                   </h3>
                 </ion-item>
                 <ion-item>
-                  <h3>হাল দাবি : <span style="font-size:15px"><b>{{obj.halDabi}} টাকা </b></span></h3>
+                  <h3>
+                    পিতার নাম :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.montobbo }} </b></span
+                    >
+                  </h3>
                 </ion-item>
                 <ion-item>
-                  <h3>মোট দাবি : <span style="font-size:15px"><b>{{obj.motDabi}} টাকা </b></span></h3>
+                  <h3>
+                    সাং :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.union }} </b></span
+                    >
+                  </h3>
                 </ion-item>
                 <ion-item>
-                  <h3> মন্তব্য : <span style="font-size:15px"><b>{{obj.montobbo}} </b></span></h3>
+                  <h3>
+                    মৌজা :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.mouja }} </b></span
+                    >
+                  </h3>
                 </ion-item>
-
-
-
+                <ion-item>
+                  <h3>
+                    দাগ নং :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.korerDhoron }}</b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    পজিশন নং :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.holdingNo }} </b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    জমির পরিমাণ :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.jomirPoriman }} বর্গ মিটার </b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    সর্বশেষ খাজনা পরিশোধের বছর :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.sorbosesKhajnaPorisodherBosor }} </b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    বকেয়া বছর :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.bokeyaBosor }} </b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    বকেয়া দাবি :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.bokeyaDabi }} টাকা </b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    বকেয়া দাবির সুদ :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.bokeyaDabirSud }} টাকা </b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    হাল দাবি :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.halDabi }} টাকা </b></span
+                    >
+                  </h3>
+                </ion-item>
+                <ion-item>
+                  <h3>
+                    মোট দাবি :
+                    <span style="font-size:15px"
+                      ><b>{{ obj.motDabi }} টাকা </b></span
+                    >
+                  </h3>
+                </ion-item>
               </ion-list>
-              <ion-row *ngIf="searchResultFound!=0">
+              <ion-row *ngIf="searchResultFound != 0">
                 <ion-col>
-                  <ion-button type="submit" (click)="openSpeakerShare()" expand="block">লাইসেন্স নবায়ন করতে ক্লিক করুন
+                  <ion-button
+                    type="submit"
+                    (click)="openSpeakerShare()"
+                    expand="block"
+                    >লাইসেন্স নবায়ন করতে ক্লিক করুন
                   </ion-button>
                 </ion-col>
               </ion-row>
             </ion-card-content>
-
-
           </ion-card>
         </ion-col>
       </ion-row>
