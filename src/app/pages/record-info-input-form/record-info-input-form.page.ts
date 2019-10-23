@@ -21,9 +21,15 @@ import { SudCalculation } from '../../model/sudCalculation';
 export class RecordInfoInputFormPage implements OnInit, OnDestroy {
   subscription: Subscription;
   pourosova: Pourosova[];
+
   hats: Hat[];
+  searchHats: Hat[];
+
   licences: Licence[];
+  searchLicences: Licence[];
+
   userInfo = new UserInfos();
+  
   sudCalculation=new SudCalculation();
 
   userCount: UserInfos[];
@@ -162,5 +168,26 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
           toastData.present();
         });
     }
+  }
+
+
+
+  pourosovaDDLChange(pourosovaId){
+    this.searchHats=[];
+    this.searchLicences=[];
+    let filterHats = (pourosovaId) ?
+       this.hats.filter(p => p.pourosovaId==pourosovaId):
+        this.hats;      
+        this.searchHats=filterHats;
+       
+  }
+
+  hatDDLChange(hatId){
+    this.searchLicences=[];
+    let filterLicence = (hatId) ?
+       this.licences.filter(p => p.hatId==hatId) :
+        this.licences;      
+        this.searchLicences=filterLicence;
+       
   }
 }

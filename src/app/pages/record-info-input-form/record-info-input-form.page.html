@@ -17,6 +17,7 @@
             #pourosovaId="ngModel"
             [(ngModel)]="userInfo.pourosovaId"
             name="pourosovaId"
+            (ionChange)="pourosovaDDLChange(userInfo.pourosovaId)"
             value="brown"
             okText="Okay"
             cancelText="Dismiss"
@@ -34,12 +35,13 @@
             #hatId="ngModel"
             [(ngModel)]="userInfo.hatId"
             name="hatId"
+            (ionChange)="hatDDLChange(userInfo.hatId)"
             value="brown"
             okText="Okay"
             cancelText="Dismiss"
             required
           >
-            <ion-select-option *ngFor="let c of hats" [value]="c.key">
+            <ion-select-option *ngFor="let c of searchHats" [value]="c.key">
               {{ c.hatName }}
             </ion-select-option>
           </ion-select>
@@ -56,7 +58,7 @@
             cancelText="Dismiss"
             required
           >
-            <ion-select-option *ngFor="let c of licences" [value]="c.key">
+            <ion-select-option *ngFor="let c of searchLicences" [value]="c.key">
               {{ c.licenceNo }}
             </ion-select-option>
           </ion-select>
