@@ -7,7 +7,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { UserInfos } from "../../model/user-inofo";
 import { ActionSheetController } from "@ionic/angular";
-import { SudCalculation } from '../../model/sudCalculation';
+import { SudCalculation } from "../../model/sudCalculation";
 
 @Component({
   selector: "displaylicenceholderinfo",
@@ -24,7 +24,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
   searchResultFound: number;
 
   obj = new UserInfos();
-  sudCalculation=new SudCalculation();
+  sudCalculation = new SudCalculation();
   constructor(
     private route: ActivatedRoute,
     private userInfoService: UserInfosService,
@@ -63,14 +63,14 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
                 p =>
                   p.pourosovaId
                     .toLowerCase()
-                    .includes(this.pourosovaId.toLowerCase() )&&
-                  p.hatId.toLowerCase().includes(this.hatId.toLowerCase() )&&
-                  p.licenceNo==this.licenceId
+                    .includes(this.pourosovaId.toLowerCase()) &&
+                  p.hatId.toLowerCase().includes(this.hatId.toLowerCase()) &&
+                  p.licenceNo == this.licenceId
               )
             : this.userInfos;
           this.searchResultUserInfos = filteredUserInfo;
           this.searchResultFound = this.searchResultUserInfos.length;
- 
+
           if (this.searchResultUserInfos.length != 0) {
             this.searchResultUserInfos.sort(
               (a, b) =>
@@ -79,7 +79,9 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
             );
 
             this.obj = this.searchResultUserInfos.shift();
-            this.obj=this.sudCalculation.SudCalculationActionHandaler(this.obj);
+            this.obj = this.sudCalculation.SudCalculationActionHandaler(
+              this.obj
+            );
           }
         }
       });
@@ -92,7 +94,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
 
   async openSpeakerShare(speaker: any) {
     let userUniCode = this.obj.userUniCode;
-    let motDabi=this.obj.motDabi;
+    let motDabi = this.obj.motDabi;
     let key = this.obj.key;
 
     console.log("userUniCode", userUniCode);
@@ -102,19 +104,37 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
         {
           text: "ইমেইল",
           handler: () => {
-            this.router.navigate(["/paymentprocedure/", 1, userUniCode, key,motDabi]);
+            this.router.navigate([
+              "/paymentprocedure/",
+              1,
+              userUniCode,
+              key,
+              motDabi
+            ]);
           }
         },
         {
           text: "ডাকযোগে",
           handler: () => {
-            this.router.navigate(["/paymentprocedure/", 2, userUniCode, key,motDabi]);
+            this.router.navigate([
+              "/paymentprocedure/",
+              2,
+              userUniCode,
+              key,
+              motDabi
+            ]);
           }
         },
         {
-          text: "উপজিলা বহুমি অফিস হতে",
+          text: "উপজেলা ভূমি অফিস হতে",
           handler: () => {
-            this.router.navigate(["/paymentprocedure/", 3, userUniCode, key,motDabi]);
+            this.router.navigate([
+              "/paymentprocedure/",
+              3,
+              userUniCode,
+              key,
+              motDabi
+            ]);
           }
         },
         {

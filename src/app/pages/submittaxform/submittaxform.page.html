@@ -9,43 +9,58 @@
 
 <ion-content class="ion-padding speaker-detail">
   <div class="ion-text-center">
-
     <form #f="ngForm" novalidate>
       <ion-list>
         <ion-text color="danger">
-          <p *ngIf="bikashnumber.touched && bikashnumber.invalid" class="ion-padding-start">
+          <p
+            *ngIf="bikashnumber.touched && bikashnumber.invalid"
+            class="ion-padding-start"
+          >
             বিকাশ নম্বর দিতে হবে !
           </p>
-          <p *ngIf="tnsnumber.touched && tnsnumber.invalid" class="ion-padding-start">
-            ট্রানসাকশান নম্বর দিতে হবে !
+          <p
+            *ngIf="tnsnumber.touched && tnsnumber.invalid"
+            class="ion-padding-start"
+          >
+            ট্রানজ্যাকশন নম্বর দিতে হবে !
           </p>
         </ion-text>
         <ion-item>
-          <ion-label position="floating">বিকাশ নাম্বার দিন(যে নাম্বার হতে টাকা পাথিয়েছেন)</ion-label>
-          <ion-input #bikashnumber="ngModel" [(ngModel)]="submitform.bikashnumber" name="bikashnumber" type="text"
-            required></ion-input>
-
+          <ion-label position="floating"
+            >বিকাশ নাম্বার দিন(যে নাম্বার হতে টাকা পাঠিয়েছেন)</ion-label
+          >
+          <ion-input
+            #bikashnumber="ngModel"
+            [(ngModel)]="submitform.bikashnumber"
+            name="bikashnumber"
+            type="text"
+            required
+          ></ion-input>
         </ion-item>
-
 
         <ion-item>
           <ion-label position="floating">ট্রানজ্যাকশন নাম্বার দিন</ion-label>
-          <ion-input #tnsnumber="ngModel" [(ngModel)]="submitform.tnsnumber" name="tnsnumber" type="text" required>
+          <ion-input
+            #tnsnumber="ngModel"
+            [(ngModel)]="submitform.tnsnumber"
+            name="tnsnumber"
+            type="text"
+            required
+          >
           </ion-input>
         </ion-item>
-
       </ion-list>
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit" (click)="f.valid&&save(submitform)" expand="block">সাবমিট</ion-button>
+          <ion-button
+            type="submit"
+            (click)="f.valid && save(submitform)"
+            expand="block"
+            >সাবমিট</ion-button
+          >
         </ion-col>
       </ion-row>
     </form>
-
-
-
   </div>
-
-
 </ion-content>
