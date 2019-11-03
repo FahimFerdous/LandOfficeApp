@@ -42,7 +42,7 @@ export class UserData {
     
     
       this.auth.signIn(login.email,login.password).then(success=>{
-  
+            console.log('login success',success.user);
       }).catch(error=>{
         alert(error.message);
       });
