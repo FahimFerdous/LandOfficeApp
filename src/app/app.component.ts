@@ -15,6 +15,8 @@ import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { Storage } from "@ionic/storage";
 
 import { UserData } from "./providers/user-data";
+import { AuthService } from './services/auth.service';
+import { AppUser } from './model/app-user';
 
 @Component({
   selector: "app-root",
@@ -50,8 +52,8 @@ export class AppComponent implements OnInit {
       icon: "contacts"
     },
     {
-      title: "Search Licence",
-      url: "/search-licence-page",
+      title: "Employees-info",
+      url: "/employees-info",
       icon: "information-circle"
     },
     {
@@ -81,7 +83,7 @@ export class AppComponent implements OnInit {
     }
   ];
   loggedIn = false;
-
+  isAdmin:boolean;
   constructor(
     private events: Events,
     private menu: MenuController,
@@ -92,12 +94,18 @@ export class AppComponent implements OnInit {
     private storage: Storage,
     private userData: UserData,
     private swUpdate: SwUpdate,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private authService:AuthService
   ) {
     this.initializeApp();
+     
+      this.authService.appUser$.subscribe(s=>{this.isAdmin=s.isAdmin;});
+      
   }
 
   async ngOnInit() {
+
+
     this.checkLoginStatus();
     this.listenForLoginEvents();
 

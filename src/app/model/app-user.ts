@@ -4,5 +4,5 @@ export class AppUser {
     email: string;   
     password:any;
     mobile:string;   
-   
+    isAdmin:boolean;
   }

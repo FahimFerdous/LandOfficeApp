@@ -9,11 +9,11 @@
       </ion-header>
       <ion-content>
 
-        <ion-list>
+        <ion-list  *ngIf="isAdmin">
           <ion-list-header>
             Data Entry
           </ion-list-header>
-          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
+          <ion-menu-toggle  autoHide="false" *ngFor="let p of appPages; let i = index">
             <ion-item [routerLink]="p.url" routerLinkActive="active" routerDirection="root">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -63,6 +63,15 @@
           <ion-list-header>
             Account
           </ion-list-header>-->
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/search-licence-page" routerDirection="root">
+              <ion-icon slot="start" name="information-circle"></ion-icon>
+              <ion-label>
+                Search Licence
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
             <ion-item routerLink="/login" routerDirection="root">
