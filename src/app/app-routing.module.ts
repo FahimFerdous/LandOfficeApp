@@ -180,7 +180,14 @@ const routes: Routes = [
     loadChildren: ()=>import('./pages/add-employee-info/add-employee-info.module').then(
       m=>m.AddEmployeeInfoPageModule
     ) 
-  },  { path: 'aprovepayment-list', loadChildren: './pages/aprovepayment-list/aprovepayment-list.module#AprovepaymentListPageModule' }
+  },
+  { path: 'aprovepayment-list', 
+    loadChildren: ()=>import('./pages/aprovepayment-list/aprovepayment-list.module').then(
+      m=>m.AprovepaymentListPageModule) },
+  { path: 'user-payment-details', 
+    loadChildren: ()=>import('./pages/user-payment-details/user-payment-details.module').then(
+      m=>m.UserPaymentDetailsPageModule) }
+
 
 
 ];

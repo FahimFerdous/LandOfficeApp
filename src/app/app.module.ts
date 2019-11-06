@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
     AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
-    })
+    }),
+    NgxDatatableModule
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar,AngularFireStorage],
