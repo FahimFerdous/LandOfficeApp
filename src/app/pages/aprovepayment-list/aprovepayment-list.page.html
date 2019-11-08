@@ -30,7 +30,11 @@
     </ion-row>
   </ion-grid> -->
 
-  <ngx-datatable>
-  <ngx-datatable-column name="name"></ngx-datatable-column>
+  <ngx-datatable
+  [rows]="userInfos">
+   
+  <ngx-datatable-column  name="malikerName"></ngx-datatable-column>
+  <ngx-datatable-column  name="motDabi"></ngx-datatable-column>
+  <ngx-datatable-column  name="bokeyaDabi"></ngx-datatable-column>
   </ngx-datatable>
 </ion-content>
