@@ -32,5 +32,6 @@ export class UserInfos {
      trnxEntryDate:number;
      prodottoTakarPoriman:number;
 
+     Name//view Property
 
     }

@@ -1,5 +1,8 @@
-<ion-header>
+<ion-header>   
   <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
+        </ion-buttons>
     <ion-title>aprovepayment-list</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -31,10 +34,15 @@
   </ion-grid> -->
 
   <ngx-datatable
-  [rows]="userInfos">
+  [rows]="userInfos"
+  [columnMode]="'force'">
    
-  <ngx-datatable-column  name="holdingNo"></ngx-datatable-column>
-  <ngx-datatable-column  name="holdingNo"></ngx-datatable-column>
-  <ngx-datatable-column  name="holdingNo"></ngx-datatable-column>
+  <ngx-datatable-column  name="malikerName"></ngx-datatable-column>
+  <ngx-datatable-column  name="approvedDate"></ngx-datatable-column>
+  <ngx-datatable-column  name="Action">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <ion-button size="small" fill="outline" (click)="open(row)">Details</ion-button>
+    </ng-template>
+  </ngx-datatable-column>
   </ngx-datatable>
 </ion-content>

@@ -184,7 +184,7 @@ const routes: Routes = [
   { path: 'aprovepayment-list', 
     loadChildren: ()=>import('./pages/aprovepayment-list/aprovepayment-list.module').then(
       m=>m.AprovepaymentListPageModule) },
-  { path: 'user-payment-details', 
+  { path: 'user-payment-details/:key', 
     loadChildren: ()=>import('./pages/user-payment-details/user-payment-details.module').then(
       m=>m.UserPaymentDetailsPageModule) }
 

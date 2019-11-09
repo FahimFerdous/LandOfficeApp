@@ -79,6 +79,7 @@ console.log('submittedTaxForm',this.submitTaxForms);
 
   approved(userInfos){
     userInfos.approved=true;
+    userInfos.approvedDate=new Date().getTime();
     userInfos.bokeyaDabi=(userInfos.motDabi-userInfos.prodottoTakarPoriman);
     console.log(userInfos['key'])
     this.userInfoService.update(userInfos['key'],userInfos).then(t=>{
