@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
     </ion-buttons>
-    <ion-title>User Payment Details</ion-title>
+    <ion-title>ব্যাক্তিগত হিসাবের লিস্ট</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,62 +14,57 @@
         <ion-col size="12" size-md="6">
           <ion-card class="speaker-card">
             <ion-card-content>
-              <ion-list>
+              <ion-list> 
                 <ion-item>
-                  <h3>
+                  <h4>
                     মালিকের নাম :
                     <span style="font-size:15px"><b>{{userInfo.malikerName}}</b></span>
-                  </h3>
+                  </h4>
                 </ion-item>
 
                 <ion-item>
-                  <h3>
-                    মোট দাবি :
-                    <span style="font-size:15px"><b>{{userInfo.motDabi}} টাকা </b></span>
-                  </h3>
+                  <h4>
+                    মৌজা  :
+                    <span style="font-size:15px"><b>{{userInfo.mouja}}  </b></span>
+                  </h4>
                 </ion-item>
 
                 <ion-item>
-                  <h3>
-                    মোট দাবি :
-                    <span style="font-size:15px"><b>{{userInfo.motDabi}} টাকা </b></span>
-                  </h3>
+                  <h4>
+                    দাগ নং :
+                    <span style="font-size:15px"><b>{{userInfo.korerDhoron}} </b></span>
+                  </h4>
                 </ion-item>
 
                 <ion-item>
-                  <h3>
-                    মোট দাবি :
-                    <span style="font-size:15px"><b>{{userInfo.motDabi}} টাকা </b></span>
-                  </h3>
+                  <h4>
+                    জমির পরিমাণ :
+                    <span style="font-size:15px"><b>{{userInfo.jomirPoriman}}  </b></span>
+                  </h4>
                 </ion-item>
 
                 <ion-item>
-                  <h3>
+                  <h4>
                     মোট দাবি :
                     <span style="font-size:15px"><b>{{userInfo.motDabi}} টাকা </b></span>
-                  </h3>
+                  </h4>
                 </ion-item>
 
                 <ion-item>
-                  <h3>
-                    মোট দাবি :
+                  <h4>
+                    বকেয়া দাবি :
                     <span style="font-size:15px"><b>{{userInfo.motDabi}} টাকা </b></span>
-                  </h3>
+                  </h4>
                 </ion-item>
 
                 <ion-item>
-                  <h3>
-                    মোট দাবি :
+                  <h4>
+                    পরিশোধ কৃত টাকার পরিমান :
                     <span style="font-size:15px"><b>{{userInfo.motDabi}} টাকা </b></span>
-                  </h3>
+                  </h4>
                 </ion-item>
 
-                <ion-item>
-                  <h3>
-                    মোট দাবি :
-                    <span style="font-size:15px"><b>{{userInfo.motDabi}} টাকা </b></span>
-                  </h3>
-                </ion-item>
+                
 
               </ion-list>
               <!-- <ion-row>
