@@ -1,8 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { ActionSheetController } from '@ionic/angular';
-
+import { ActionSheetController, Platform } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { ConferenceData } from '../../providers/conference-data';
 
 @Component({
@@ -10,14 +10,15 @@ import { ConferenceData } from '../../providers/conference-data';
   templateUrl: 'speaker-list.html',
   styleUrls: ['./speaker-list.scss'],
 })
-export class SpeakerListPage {
+export class SpeakerListPage implements AfterViewInit {
   speakers: any[] = [];
-
+  subscription:Subscription;
   constructor(
     public actionSheetCtrl: ActionSheetController,
     public confData: ConferenceData,
     public inAppBrowser: InAppBrowser,
     public router: Router,
+    private platform: Platform
     
   ) {}
 
@@ -100,4 +101,11 @@ export class SpeakerListPage {
 
     await actionSheet.present();
   }
+
+  ngAfterViewInit() {
+    this.subscription = this.platform.backButton.subscribe(() => {     
+        navigator['app'].exitApp();
+    });
+  }
+
 }
