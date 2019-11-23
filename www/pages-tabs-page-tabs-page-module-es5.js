@@ -1518,10 +1518,15 @@ var SpeakerListPage = /** @class */ (function () {
             });
         });
     };
+    SpeakerListPage.prototype.ngOnInit = function () {
+    };
     SpeakerListPage.prototype.ngAfterViewInit = function () {
         this.subscription = this.platform.backButton.subscribe(function () {
             navigator['app'].exitApp();
         });
+    };
+    SpeakerListPage.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
     };
     SpeakerListPage.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"] },

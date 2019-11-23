@@ -1369,10 +1369,15 @@ let SpeakerListPage = class SpeakerListPage {
             yield actionSheet.present();
         });
     }
+    ngOnInit() {
+    }
     ngAfterViewInit() {
         this.subscription = this.platform.backButton.subscribe(() => {
             navigator['app'].exitApp();
         });
+    }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 };
 SpeakerListPage.ctorParameters = () => [

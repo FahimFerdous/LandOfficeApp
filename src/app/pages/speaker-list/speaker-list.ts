@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { Component, ViewEncapsulation, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ActionSheetController, Platform } from '@ionic/angular';
@@ -10,7 +10,7 @@ import { ConferenceData } from '../../providers/conference-data';
   templateUrl: 'speaker-list.html',
   styleUrls: ['./speaker-list.scss'],
 })
-export class SpeakerListPage implements AfterViewInit {
+export class SpeakerListPage implements  OnInit,OnDestroy,AfterViewInit  {
   speakers: any[] = [];
   subscription:Subscription;
   constructor(
@@ -102,10 +102,17 @@ export class SpeakerListPage implements AfterViewInit {
     await actionSheet.present();
   }
 
+  ngOnInit() {
+   
+   
+  }
   ngAfterViewInit() {
     this.subscription = this.platform.backButton.subscribe(() => {     
         navigator['app'].exitApp();
     });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe() ;   
+  }
 }
