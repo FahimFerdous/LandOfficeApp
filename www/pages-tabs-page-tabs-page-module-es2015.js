@@ -1292,11 +1292,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SpeakerListPage = class SpeakerListPage {
-    constructor(actionSheetCtrl, confData, inAppBrowser, router) {
+    constructor(actionSheetCtrl, confData, inAppBrowser, router, platform) {
         this.actionSheetCtrl = actionSheetCtrl;
         this.confData = confData;
         this.inAppBrowser = inAppBrowser;
         this.router = router;
+        this.platform = platform;
         this.speakers = [];
     }
     ionViewDidEnter() {
@@ -1368,12 +1369,23 @@ let SpeakerListPage = class SpeakerListPage {
             yield actionSheet.present();
         });
     }
+    ngOnInit() {
+    }
+    ngAfterViewInit() {
+        this.subscription = this.platform.backButton.subscribe(() => {
+            navigator['app'].exitApp();
+        });
+    }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 };
 SpeakerListPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"] },
     { type: _providers_conference_data__WEBPACK_IMPORTED_MODULE_5__["ConferenceData"] },
     { type: _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_3__["InAppBrowser"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] }
 ];
 SpeakerListPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1384,7 +1396,8 @@ SpeakerListPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"],
         _providers_conference_data__WEBPACK_IMPORTED_MODULE_5__["ConferenceData"],
         _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_3__["InAppBrowser"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]])
 ], SpeakerListPage);
 
 

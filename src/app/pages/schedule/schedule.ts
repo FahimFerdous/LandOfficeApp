@@ -144,19 +144,12 @@ export class SchedulePage implements OnInit,OnDestroy,AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.subscription = this.platform.backButton.subscribe(() => {
-      if (this.router.isActive('/app/tabs/schedule', true) && this.router.url === '/app/tabs/schedule') {
+    this.subscription = this.platform.backButton.subscribe(() => {     
         navigator['app'].exitApp();
-      }
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe() ;
-    this.subscription = this.platform.backButton.subscribe(() => {
-      if (this.router.isActive('/app/tabs/schedule', true) && this.router.url === '/app/tabs/schedule') {
-        navigator['app'].exitApp();
-      }
-    });
+    this.subscription.unsubscribe() ;   
   }
 }
