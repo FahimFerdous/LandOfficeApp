@@ -34,4 +34,6 @@ export class UserInfos {
 
      Name//view Property
 
+     licenceFee:number;
+
     }

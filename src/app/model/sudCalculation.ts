@@ -2,7 +2,8 @@ import { UserInfos } from "./user-inofo";
 
 export class SudCalculation {
   SudCalculationActionHandaler(userInfos: UserInfos) {
-    userInfos.halDabi = parseFloat(userInfos.jomirPoriman) * 25;
+    console.log('from sud Calculation',userInfos.licenceFee);
+    userInfos.halDabi = parseFloat(userInfos.jomirPoriman) *userInfos.licenceFee;
     var currentDateObj = new Date();
     var currentyearInEnglish = currentDateObj.getUTCFullYear();
 

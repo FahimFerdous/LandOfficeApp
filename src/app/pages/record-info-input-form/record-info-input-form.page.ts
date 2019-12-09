@@ -145,6 +145,9 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
         userInfo.sorbosesKhajnaPorisodherBosor
       );
 
+      var hatObj=this.hats.find(element => element.key ==userInfo.hatId);
+      userInfo.licenceFee=hatObj.suderHar;
+      console.log('from sud input page',userInfo.licenceFee);
 
       userInfo= this.sudCalculation.SudCalculationActionHandaler(userInfo);  
       await this.userInfoService.save(userInfo).then(t => {

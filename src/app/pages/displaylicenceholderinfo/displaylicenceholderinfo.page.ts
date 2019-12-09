@@ -8,6 +8,8 @@ import { Subscription } from "rxjs";
 import { UserInfos } from "../../model/user-inofo";
 import { ActionSheetController } from "@ionic/angular";
 import { SudCalculation } from "../../model/sudCalculation";
+import { HatService } from '../../services/hat.service';
+import { Hat } from '../../model/hat';
 
 @Component({
   selector: "displaylicenceholderinfo",
@@ -22,11 +24,13 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
   userInfos: UserInfos[];
   searchResultUserInfos: UserInfos[];
   searchResultFound: number;
-
+  hats:Hat[];
   obj = new UserInfos();
+  hatObj=new Hat();
   sudCalculation = new SudCalculation();
   constructor(
     private route: ActivatedRoute,
+    private hatService:HatService,
     private userInfoService: UserInfosService,
     public actionSheetCtrl: ActionSheetController,
     private router: Router
@@ -36,6 +40,9 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
     this.pourosovaId = this.route.snapshot.paramMap.get("pourosovaId");
     this.hatId = this.route.snapshot.paramMap.get("hatId");
     this.licenceId = this.route.snapshot.paramMap.get("licenceId");
+
+    
+    
 
     var x = this.userInfoService.getAllUserInfos();
     this.subscription = x
@@ -51,6 +58,8 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
             this.userInfos.push(y as UserInfos);
           }
         });
+
+      
 
         if (
           this.pourosovaId !== undefined &&
@@ -79,6 +88,31 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
             );
 
             this.obj = this.searchResultUserInfos.shift();
+
+           
+            // this.hatService.getAllHat()
+            // .snapshotChanges()
+            // .pipe()
+            // .subscribe(item => {
+            //   this.hats = [];
+            //   item.forEach(element => {
+            //     var y = element.payload.toJSON();
+      
+            //     if (y["approved"] == true) {
+            //       y["key"] = element.key;
+            //       this.hats.push(y as Hat);
+            //     }
+            //   });
+            //   this.hatObj=this.hats.find(element => element.key == this.hatId);
+            //   this.obj.licenceFee=this.hatObj.suderHar;
+            //   console.log('hats', this.hats);
+            //   console.log('hat id',this.hatId);
+            //  });
+
+
+          console.log(this.obj);
+           
+      // console.log('from sud displayLicence page',this.obj.licenceFee);
             this.obj = this.sudCalculation.SudCalculationActionHandaler(
               this.obj
             );
