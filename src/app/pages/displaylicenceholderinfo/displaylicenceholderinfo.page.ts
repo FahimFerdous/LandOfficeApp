@@ -90,26 +90,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
             this.obj = this.searchResultUserInfos.shift();
 
            
-            // this.hatService.getAllHat()
-            // .snapshotChanges()
-            // .pipe()
-            // .subscribe(item => {
-            //   this.hats = [];
-            //   item.forEach(element => {
-            //     var y = element.payload.toJSON();
-      
-            //     if (y["approved"] == true) {
-            //       y["key"] = element.key;
-            //       this.hats.push(y as Hat);
-            //     }
-            //   });
-            //   this.hatObj=this.hats.find(element => element.key == this.hatId);
-            //   this.obj.licenceFee=this.hatObj.suderHar;
-            //   console.log('hats', this.hats);
-            //   console.log('hat id',this.hatId);
-            //  });
-
-
+           
           console.log(this.obj);
            
       // console.log('from sud displayLicence page',this.obj.licenceFee);
