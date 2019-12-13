@@ -145,7 +145,7 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
         userInfo.sorbosesKhajnaPorisodherBosor
       );
 
-      
+     
 
       userInfo= this.sudCalculation.SudCalculationActionHandaler(userInfo);  
       await this.userInfoService.save(userInfo).then(t => {

@@ -6,12 +6,12 @@ export class SudCalculation {
     userInfos.halDabi = parseFloat(userInfos.jomirPoriman) *userInfos.licenceFee;
     var currentDateObj = new Date();
     var currentyearInEnglish = currentDateObj.getUTCFullYear();
-
+    
     var currentYearInBangla = currentyearInEnglish - 593;
+    var sorbosesKhajnaPorisodherBosorInBangla= parseInt(userInfos.sorbosesKhajnaPorisodherBosor)-593;
     userInfos.bokeyaBosor =
       currentYearInBangla -
-      parseInt(userInfos.sorbosesKhajnaPorisodherBosor) -
-      1;
+      sorbosesKhajnaPorisodherBosorInBangla;
 
     if (userInfos.bokeyaBosor > 1) {
       let calculateYear = userInfos.bokeyaBosor * (userInfos.bokeyaBosor + 1);
@@ -43,7 +43,7 @@ export class SudCalculation {
       userInfos.motDabi = motDabi;
 
       userInfos.bokeyaDabirSud = bokeyaDabirSud;
-      userInfos.bokeyaBosor = 0;
+     // userInfos.bokeyaBosor = 0;
     }
 
     return userInfos;
