@@ -87,6 +87,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_user_inofo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../model/user-inofo */ "./src/app/model/user-inofo.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _model_sudCalculation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../model/sudCalculation */ "./src/app/model/sudCalculation.ts");
+/* harmony import */ var _services_hat_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/hat.service */ "./src/app/services/hat.service.ts");
+/* harmony import */ var _model_hat__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../model/hat */ "./src/app/model/hat.ts");
+
+
 
 
 
@@ -95,12 +99,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let DisplaylicenceholderinfoPage = class DisplaylicenceholderinfoPage {
-    constructor(route, userInfoService, actionSheetCtrl, router) {
+    constructor(route, hatService, userInfoService, actionSheetCtrl, router) {
         this.route = route;
+        this.hatService = hatService;
         this.userInfoService = userInfoService;
         this.actionSheetCtrl = actionSheetCtrl;
         this.router = router;
         this.obj = new _model_user_inofo__WEBPACK_IMPORTED_MODULE_4__["UserInfos"]();
+        this.hatObj = new _model_hat__WEBPACK_IMPORTED_MODULE_8__["Hat"]();
         this.sudCalculation = new _model_sudCalculation__WEBPACK_IMPORTED_MODULE_6__["SudCalculation"]();
     }
     ngOnInit() {
@@ -137,6 +143,8 @@ let DisplaylicenceholderinfoPage = class DisplaylicenceholderinfoPage {
                     this.searchResultUserInfos.sort((a, b) => new Date(b.entryDate).getTime() -
                         new Date(a.entryDate).getTime());
                     this.obj = this.searchResultUserInfos.shift();
+                    console.log(this.obj);
+                    // console.log('from sud displayLicence page',this.obj.licenceFee);
                     this.obj = this.sudCalculation.SudCalculationActionHandaler(this.obj);
                 }
             }
@@ -203,6 +211,7 @@ let DisplaylicenceholderinfoPage = class DisplaylicenceholderinfoPage {
 };
 DisplaylicenceholderinfoPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _services_hat_service__WEBPACK_IMPORTED_MODULE_7__["HatService"] },
     { type: _services_user_infos_service__WEBPACK_IMPORTED_MODULE_1__["UserInfosService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ActionSheetController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
@@ -214,6 +223,7 @@ DisplaylicenceholderinfoPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
         styles: [__webpack_require__(/*! ./displaylicenceholderinfo.page.scss */ "./src/app/pages/displaylicenceholderinfo/displaylicenceholderinfo.page.scss")]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+        _services_hat_service__WEBPACK_IMPORTED_MODULE_7__["HatService"],
         _services_user_infos_service__WEBPACK_IMPORTED_MODULE_1__["UserInfosService"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ActionSheetController"],
         _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])

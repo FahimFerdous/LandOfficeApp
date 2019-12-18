@@ -376,6 +376,26 @@ var blockedTags = ['script', 'style', 'iframe', 'meta', 'link', 'object', 'embed
 
 /***/ }),
 
+/***/ "./src/app/model/hat.ts":
+/*!******************************!*\
+  !*** ./src/app/model/hat.ts ***!
+  \******************************/
+/*! exports provided: Hat */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hat", function() { return Hat; });
+var Hat = /** @class */ (function () {
+    function Hat() {
+    }
+    return Hat;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/model/licence.ts":
 /*!**********************************!*\
   !*** ./src/app/model/licence.ts ***!
@@ -410,7 +430,8 @@ var SudCalculation = /** @class */ (function () {
     function SudCalculation() {
     }
     SudCalculation.prototype.SudCalculationActionHandaler = function (userInfos) {
-        userInfos.halDabi = parseFloat(userInfos.jomirPoriman) * 25;
+        console.log('from sud Calculation', userInfos.licenceFee);
+        userInfos.halDabi = parseFloat(userInfos.jomirPoriman) * userInfos.licenceFee;
         var currentDateObj = new Date();
         var currentyearInEnglish = currentDateObj.getUTCFullYear();
         var currentYearInBangla = currentyearInEnglish - 593;

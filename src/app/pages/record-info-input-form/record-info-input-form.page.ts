@@ -145,8 +145,8 @@ export class RecordInfoInputFormPage implements OnInit, OnDestroy {
         userInfo.sorbosesKhajnaPorisodherBosor
       );
 
+     userInfo.licenceFee= parseInt(this.converBanglaNumberToEnglish(userInfo.licenceFee));
      
-
       userInfo= this.sudCalculation.SudCalculationActionHandaler(userInfo);  
       await this.userInfoService.save(userInfo).then(t => {
         const toast = this.toastController

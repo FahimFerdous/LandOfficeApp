@@ -7,23 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/app/tabs/speakers\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>হাঁট নাম্বার দিন</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content class=\"ion-padding speaker-detail\">\r\n  <div class=\"ion-text-center\">\r\n    <form novalidate>\r\n      <ion-list>\r\n        <ion-item>\r\n          <ion-label>সিলেক্ট ইউনিয়ন/পৌরসভা</ion-label>\r\n          <ion-select\r\n            #pourosovaId=\"ngModel\"\r\n            [(ngModel)]=\"hat.pourosovaId\"\r\n            name=\"pourosovaId\"\r\n            value=\"brown\"\r\n            okText=\"Okay\"\r\n            cancelText=\"Dismiss\"\r\n          >\r\n            <ion-select-option *ngFor=\"let c of pourosova\" [value]=\"c.key\">\r\n              {{ c.pourosovaName }}\r\n            </ion-select-option>\r\n          </ion-select>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-input\r\n            #hatName=\"ngModel\"\r\n            [(ngModel)]=\"hat.hatName\"\r\n            name=\"hatName\"\r\n            clearInput\r\n            placeholder=\"Hat Name\"\r\n          ></ion-input>\r\n        </ion-item>\r\n      </ion-list>\r\n\r\n      <ion-row>\r\n        <ion-col>\r\n          <ion-button (click)=\"save(hat)\" type=\"submit\" expand=\"block\"\r\n            >Submit</ion-button\r\n          >\r\n        </ion-col>\r\n      </ion-row>\r\n    </form>\r\n  </div>\r\n</ion-content>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/model/hat.ts":
-/*!******************************!*\
-  !*** ./src/app/model/hat.ts ***!
-  \******************************/
-/*! exports provided: Hat */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hat", function() { return Hat; });
-class Hat {
-}
-
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/app/tabs/speakers\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>হাঁট নাম্বার দিন</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content class=\"ion-padding speaker-detail\">\r\n  <div class=\"ion-text-center\">\r\n    <form novalidate>\r\n      <ion-list>\r\n        <ion-item>\r\n          <ion-label>সিলেক্ট ইউনিয়ন/পৌরসভা</ion-label>\r\n          <ion-select\r\n            #pourosovaId=\"ngModel\"\r\n            [(ngModel)]=\"hat.pourosovaId\"\r\n            name=\"pourosovaId\"\r\n            value=\"brown\"\r\n            okText=\"Okay\"\r\n            cancelText=\"Dismiss\"\r\n          >\r\n            <ion-select-option *ngFor=\"let c of pourosova\" [value]=\"c.key\">\r\n              {{ c.pourosovaName }}\r\n            </ion-select-option>\r\n          </ion-select>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-input\r\n            #hatName=\"ngModel\"\r\n            [(ngModel)]=\"hat.hatName\"\r\n            name=\"hatName\"\r\n            clearInput\r\n            placeholder=\"Hat Name\"\r\n          ></ion-input>\r\n        </ion-item>\r\n\r\n       \r\n      </ion-list>\r\n\r\n      <ion-row>\r\n        <ion-col>\r\n          <ion-button (click)=\"save(hat)\" type=\"submit\" expand=\"block\"\r\n            >Submit</ion-button\r\n          >\r\n        </ion-col>\r\n      </ion-row>\r\n    </form>\r\n  </div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
