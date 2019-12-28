@@ -151,7 +151,7 @@ var DisplaylicenceholderinfoPage = /** @class */ (function () {
                             new Date(a.entryDate).getTime();
                     });
                     _this.obj = _this.searchResultUserInfos.shift();
-                    console.log(_this.obj);
+                    //  console.log(this.obj);
                     // console.log('from sud displayLicence page',this.obj.licenceFee);
                     _this.obj = _this.sudCalculation.SudCalculationActionHandaler(_this.obj);
                 }

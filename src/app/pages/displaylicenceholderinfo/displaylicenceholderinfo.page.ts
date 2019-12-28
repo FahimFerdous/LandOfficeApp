@@ -91,7 +91,7 @@ export class DisplaylicenceholderinfoPage implements OnInit, OnDestroy {
 
            
            
-          console.log(this.obj);
+        //  console.log(this.obj);
            
       // console.log('from sud displayLicence page',this.obj.licenceFee);
             this.obj = this.sudCalculation.SudCalculationActionHandaler(

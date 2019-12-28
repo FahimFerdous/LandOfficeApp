@@ -431,15 +431,16 @@ var SudCalculation = /** @class */ (function () {
     }
     SudCalculation.prototype.SudCalculationActionHandaler = function (userInfos) {
         console.log('from sud Calculation', userInfos.licenceFee);
-        userInfos.halDabi = parseFloat(userInfos.jomirPoriman) * userInfos.licenceFee;
+        userInfos.halDabi = userInfos.licenceFee;
         var currentDateObj = new Date();
         var currentyearInEnglish = currentDateObj.getUTCFullYear();
         var currentYearInBangla = currentyearInEnglish - 593;
+        var sorbosesKhajnaPorisodherBosorInBangla = parseInt(userInfos.sorbosesKhajnaPorisodherBosor);
         userInfos.bokeyaBosor =
             currentYearInBangla -
-                parseInt(userInfos.sorbosesKhajnaPorisodherBosor) -
-                1;
-        if (userInfos.bokeyaBosor > 1) {
+                sorbosesKhajnaPorisodherBosorInBangla;
+        userInfos.bokeyaBosor = userInfos.bokeyaBosor - 1;
+        if (userInfos.bokeyaBosor >= 1) {
             var calculateYear = userInfos.bokeyaBosor * (userInfos.bokeyaBosor + 1);
             var DivisonResult = calculateYear / 32;
             var bokeyaDabirSud = DivisonResult * userInfos.halDabi;
@@ -451,6 +452,7 @@ var SudCalculation = /** @class */ (function () {
         else {
             if (userInfos.bokeyaBosor <= 0) {
                 userInfos.bokeyaBosor = 1;
+                console.log('bokeya bosor from sud cal 1 ', userInfos.bokeyaBosor);
             }
             var step1 = userInfos.bokeyaBosor;
             var tempsud = Math.round(userInfos.bokeyaDabi * 0.0625);
@@ -461,6 +463,7 @@ var SudCalculation = /** @class */ (function () {
             userInfos.motDabi = motDabi;
             userInfos.bokeyaDabirSud = bokeyaDabirSud;
             userInfos.bokeyaBosor = 0;
+            console.log('bokeya bosor from sud cal ', userInfos.bokeyaBosor);
         }
         return userInfos;
     };

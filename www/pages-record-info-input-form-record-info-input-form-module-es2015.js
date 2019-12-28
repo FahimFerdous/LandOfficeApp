@@ -202,6 +202,7 @@ class RecordInfoInputFormPage {
                 userInfo.jomirPoriman = this.converBanglaNumberToEnglish(userInfo.jomirPoriman);
                 userInfo.bokeyaDabi = this.converBanglaNumberToEnglish(userInfo.bokeyaDabi);
                 userInfo.sorbosesKhajnaPorisodherBosor = this.converBanglaNumberToEnglish(userInfo.sorbosesKhajnaPorisodherBosor);
+                userInfo.licenceFee = parseInt(this.converBanglaNumberToEnglish(userInfo.licenceFee));
                 userInfo = this.sudCalculation.SudCalculationActionHandaler(userInfo);
                 yield this.userInfoService.save(userInfo).then(t => {
                     const toast = this.toastController

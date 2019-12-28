@@ -143,7 +143,7 @@ let DisplaylicenceholderinfoPage = class DisplaylicenceholderinfoPage {
                     this.searchResultUserInfos.sort((a, b) => new Date(b.entryDate).getTime() -
                         new Date(a.entryDate).getTime());
                     this.obj = this.searchResultUserInfos.shift();
-                    console.log(this.obj);
+                    //  console.log(this.obj);
                     // console.log('from sud displayLicence page',this.obj.licenceFee);
                     this.obj = this.sudCalculation.SudCalculationActionHandaler(this.obj);
                 }
